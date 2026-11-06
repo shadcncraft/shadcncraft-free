@@ -39,6 +39,11 @@ export type WarningCode =
   | "multiple_inverted_panels"
   | "misplaced_block"
   | "duplicate_page_chrome"
+  | "uneven_grid"
+  | "placeholder_logo"
+  | "placeholder_link"
+  | "broken_anchor"
+  | "duplicate_anchor"
   | "text_too_long"
   | "too_many_items"
   | "item_too_long";

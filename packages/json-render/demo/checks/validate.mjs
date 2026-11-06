@@ -221,6 +221,94 @@ const cases_ = [
     }),
     (r) => codes(r).includes("duplicate_page_chrome"),
   ],
+  [
+    "uneven_grid for 4 testimonials",
+    page(["a"], {
+      a: block("Testimonials11", {
+        tagline: "",
+        heading: "Customers",
+        description: "",
+        testimonials: Array.from({ length: 4 }, () => ({
+          quote: "Great product for the whole team.",
+          name: "Ada",
+          role: "CTO",
+        })),
+      }),
+    }),
+    (r) => codes(r).includes("uneven_grid"),
+  ],
+  [
+    "placeholder_logo without logoSrc or brandName",
+    page(["n"], { n: block("TopNavigation5", full.TopNavigation5, on("action")) }),
+    (r) => codes(r).includes("placeholder_logo"),
+  ],
+  [
+    "brandName clears placeholder_logo",
+    page(["n"], {
+      n: block(
+        "TopNavigation5",
+        { ...full.TopNavigation5, brandName: "Lumen" },
+        on("action")
+      ),
+    }),
+    (r) => !codes(r).includes("placeholder_logo"),
+  ],
+  [
+    "broken_anchor and placeholder_link",
+    page(["n"], {
+      n: block(
+        "TopNavigation5",
+        {
+          ...full.TopNavigation5,
+          brandName: "Lumen",
+          links: [
+            { label: "Pricing", href: "#pricing" },
+            { label: "Blog", href: "#" },
+          ],
+        },
+        on("action")
+      ),
+    }),
+    (r) => codes(r).includes("broken_anchor") && codes(r).includes("placeholder_link"),
+  ],
+  [
+    "matching anchor is fine",
+    page(["n", "p"], {
+      n: block(
+        "TopNavigation5",
+        {
+          ...full.TopNavigation5,
+          brandName: "Lumen",
+          links: [{ label: "Pricing", href: "#pricing" }],
+        },
+        on("action")
+      ),
+      p: block("CTA9", { ...full.CTA9, anchor: "pricing" }, on("primary")),
+    }),
+    (r) => !codes(r).includes("broken_anchor"),
+  ],
+  [
+    "duplicate_anchor",
+    page(["a", "b"], {
+      a: block("CTA9", { ...full.CTA9, anchor: "x" }, on("primary")),
+      b: block("FAQs4", {
+        anchor: "x",
+        tagline: "",
+        heading: "FAQ",
+        items: [{ question: "Q?", answer: "A." }],
+        supportText: "",
+        supportLinkLabel: "",
+      }),
+    }),
+    (r) => codes(r).includes("duplicate_anchor"),
+  ],
+  [
+    "invalid anchor slug",
+    page(["a"], {
+      a: block("CTA9", { ...full.CTA9, anchor: "Pricing Plans" }, on("primary")),
+    }),
+    (r) => codes(r).includes("invalid_prop"),
+  ],
   // Info
   [
     "dynamic_prop for $bindState",

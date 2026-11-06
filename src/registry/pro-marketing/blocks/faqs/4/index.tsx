@@ -13,6 +13,8 @@ import {
 export type Faqs4Item = { question: string; answer: string };
 
 export type Faqs4Props = {
+  /** Section id, so links like "#pricing" can jump here. */
+  anchor?: string;
   tagline?: string;
   heading?: string;
   items?: Faqs4Item[];
@@ -22,6 +24,7 @@ export type Faqs4Props = {
 };
 
 export function Faqs4({
+  anchor,
   tagline = "FAQ",
   heading = "Your questions answered",
   items = faqsData,
@@ -30,7 +33,7 @@ export function Faqs4({
   supportLinkHref = "#",
 }: Faqs4Props = {}) {
   return (
-    <section className="py-12 lg:py-20">
+    <section id={anchor} className="py-12 lg:py-20">
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-5 lg:gap-16 lg:px-8">
         {/* Section Heading */}
         <div className="mx-auto w-full max-w-2xl">

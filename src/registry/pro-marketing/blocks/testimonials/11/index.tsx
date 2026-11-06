@@ -20,6 +20,8 @@ export type Testimonial11Item = {
 };
 
 export type Testimonial11Props = {
+  /** Section id, so links like "#pricing" can jump here. */
+  anchor?: string;
   tagline?: string;
   heading?: string;
   description?: string;
@@ -27,13 +29,14 @@ export type Testimonial11Props = {
 };
 
 export function Testimonial11({
+  anchor,
   tagline = "Testimonials",
   heading = "What Our Customers Say",
   description = "Don't just take our word for it. See what teams are saying about Acme Inc.",
   testimonials = testimonialsData,
 }: Testimonial11Props = {}) {
   return (
-    <section className="py-12 lg:py-20">
+    <section id={anchor} className="py-12 lg:py-20">
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-5 lg:gap-16 lg:px-8">
         {/* Section Heading */}
         <SectionHeading alignment="center" className="mx-auto w-full max-w-3xl">

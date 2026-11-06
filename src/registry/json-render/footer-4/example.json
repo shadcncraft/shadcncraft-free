@@ -4,8 +4,7 @@
     "block": {
       "type": "Footer4",
       "props": {
-        "logoSrc": "/logo.svg",
-        "logoAlt": "Lumen",
+        "brandName": "Lumen",
         "homeHref": "/",
         "description": "Delivery insights for engineering teams.",
         "social": [

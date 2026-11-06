@@ -30,7 +30,7 @@ Read these instead of guessing; do not copy them into your output.
 | One-line announcement above the header | Banner10 |
 | 3, 6 or 9 benefits with icons | Benefits13 |
 | 3 or 6 customer quotes | Testimonials11 |
-| 2-4 pricing plans | Pricing8 |
+| 1-4 pricing plans (the grid fits the count) | Pricing8 |
 | 4-8 questions and answers | FAQs4 |
 | 3-9 people with portraits | Team6 |
 | Email sign-up | NewsletterSignup5 |
@@ -54,7 +54,11 @@ pads its own section.
 - Never put two panel blocks next to each other (`surface` `inverted-panel`
   or `muted-panel`: CTA9, NewsletterSignup5). Use at most one CTA9.
 - Grids are three columns on desktop: give Benefits13, Testimonials11 and
-  Team6 3, 6 or 9 items.
+  Team6 3, 6 or 9 items (`check` warns `uneven_grid` otherwise). Pricing8
+  fits any 1-4 plans.
+- For a one-page site, give sections an `anchor` (`"anchor": "pricing"`) and
+  link to it from TopNavigation5 with `"href": "#pricing"`. `check` warns
+  `broken_anchor` when a `#link` has no matching section.
 
 ## Edit a page
 
@@ -68,8 +72,14 @@ request changes them.
 - **Copy length.** Stay within `content` limits: aim for `idealChars`, never
   exceed `maxChars`. Shorten rather than overflow. Text is plain; blank
   strings are rejected.
-- **Links** take `href`: `https://…`, `/path`, `#anchor`, `mailto:` or
-  `tel:`. Mark the current page in TopNavigation5 with `"active": true`.
+- **Links** take `href`: `https://…`, `/path`, `#anchor` (a section's
+  `anchor` prop), `mailto:` or `tel:`. Never leave `"#"`. Mark the current
+  page in TopNavigation5 with `"active": true`.
+- **Logo**: TopNavigation5 and Footer4 take `brandName` (a text wordmark, works
+  anywhere) or `logoSrc` (an image file your app serves, e.g. `/logo.svg` in
+  `public/`). With neither they show the Acme placeholder.
+- **Footer social icons**: give each a real `href`, or set `"social": []` to
+  remove them.
 - **Images** (`imageSrc`, `logoSrc`) take an HTTP(S) URL or a root-relative
   path. Without one, avatars and portraits show initials.
 - **Buttons and forms** emit events: CTA9 `primary`, Pricing8 `select`,
@@ -95,7 +105,8 @@ request changes them.
    `path`. Treat warnings as defects unless the request needs them:
    `sample_content`, `text_too_long`, `too_many_items`, `unbound_event`,
    `adjacent_panels`, `multiple_inverted_panels`, `misplaced_block`,
-   `duplicate_page_chrome`.
+   `duplicate_page_chrome`, `uneven_grid`, `placeholder_logo`,
+   `placeholder_link`, `broken_anchor`, `duplicate_anchor`.
 2. Render at 375px and 1280px, light and dark. Look for headings beyond three
    lines on desktop, wrapped button labels and gaps in card grids. Click each
    bound control once.

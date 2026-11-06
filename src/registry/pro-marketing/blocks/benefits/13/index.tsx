@@ -46,6 +46,8 @@ export type Benefits13Item = {
 };
 
 export type Benefits13Props = {
+  /** Section id, so links like "#pricing" can jump here. */
+  anchor?: string;
   tagline?: string;
   heading?: string;
   description?: string;
@@ -55,13 +57,14 @@ export type Benefits13Props = {
 const iconOrder = Object.keys(benefits13Icons) as Benefits13Icon[];
 
 export function Benefits13({
+  anchor,
   tagline = "Benefits",
   heading = "Why Choose Acme Inc.",
   description = "Discover the key advantages that make Acme Inc. the right choice for your team.",
   benefits = benefitsData,
 }: Benefits13Props = {}) {
   return (
-    <section className="py-12 lg:py-20">
+    <section id={anchor} className="py-12 lg:py-20">
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-5 lg:gap-16 lg:px-8">
         {/* Section Heading */}
         <SectionHeading alignment="center" className="mx-auto w-full max-w-3xl">

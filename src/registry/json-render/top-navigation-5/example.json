@@ -4,8 +4,7 @@
     "block": {
       "type": "TopNavigation5",
       "props": {
-        "logoSrc": "/logo.svg",
-        "logoAlt": "Lumen",
+        "brandName": "Lumen",
         "homeHref": "/",
         "links": [
           {

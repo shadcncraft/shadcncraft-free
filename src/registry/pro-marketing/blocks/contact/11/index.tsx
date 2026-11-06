@@ -18,6 +18,8 @@ export type Contact11Values = {
 };
 
 export type Contact11Props = {
+  /** Section id, so links like "#pricing" can jump here. */
+  anchor?: string;
   tagline?: string;
   heading?: string;
   description?: string;
@@ -52,6 +54,7 @@ function readValues(form: HTMLFormElement): Contact11Values {
 }
 
 export function Contact11({
+  anchor,
   tagline = "Support",
   heading = "Need Help? We're Here to Help",
   description = "Our support team is available to assist you with any questions or issues you may have.",
@@ -80,7 +83,7 @@ export function Contact11({
       ...patch,
     });
   return (
-    <section className="py-12 lg:py-20">
+    <section id={anchor} className="py-12 lg:py-20">
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-5 lg:gap-16 lg:px-8">
         {/* Section Heading */}
         <div className="mx-auto w-full max-w-md">

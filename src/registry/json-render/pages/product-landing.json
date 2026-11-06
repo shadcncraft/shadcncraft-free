@@ -37,26 +37,24 @@
     "nav": {
       "type": "TopNavigation5",
       "props": {
-        "logoSrc": "/logo.svg",
-        "logoAlt": "Lumen",
+        "brandName": "Lumen",
         "homeHref": "/",
         "links": [
           {
             "label": "Features",
-            "href": "/features",
-            "active": true
+            "href": "#features"
+          },
+          {
+            "label": "Customers",
+            "href": "#customers"
           },
           {
             "label": "Pricing",
-            "href": "/pricing"
+            "href": "#pricing"
           },
           {
-            "label": "About",
-            "href": "/about"
-          },
-          {
-            "label": "Contact",
-            "href": "/contact"
+            "label": "FAQ",
+            "href": "#faq"
           }
         ],
         "actionLabel": "Sign in"
@@ -72,6 +70,7 @@
     "benefits": {
       "type": "Benefits13",
       "props": {
+        "anchor": "features",
         "tagline": "Why Lumen",
         "heading": "Everything your team needs to stay on track",
         "description": "Clear priorities, honest forecasts and fewer meetings.",
@@ -113,6 +112,7 @@
     "testimonials": {
       "type": "Testimonials11",
       "props": {
+        "anchor": "customers",
         "tagline": "Customers",
         "heading": "Teams that ship with Lumen",
         "description": "Product and engineering leads on what changed after switching.",
@@ -141,6 +141,7 @@
     "pricing": {
       "type": "Pricing8",
       "props": {
+        "anchor": "pricing",
         "tagline": "Pricing",
         "heading": "Simple plans that grow with you",
         "description": "Every plan includes unlimited dashboards and a 14-day trial.",
@@ -221,6 +222,7 @@
     "faqs": {
       "type": "FAQs4",
       "props": {
+        "anchor": "faq",
         "tagline": "FAQ",
         "heading": "Questions, answered",
         "items": [
@@ -267,8 +269,7 @@
     "footer": {
       "type": "Footer4",
       "props": {
-        "logoSrc": "/logo.svg",
-        "logoAlt": "Lumen",
+        "brandName": "Lumen",
         "homeHref": "/",
         "description": "Delivery insights for engineering teams.",
         "social": [

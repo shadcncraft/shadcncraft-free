@@ -6,6 +6,7 @@ import { href, imageSrc, text } from "../shared/schema";
 
 export const propsSchema = z.strictObject({
   logoSrc: imageSrc.optional(),
+  brandName: text.optional(),
   logoAlt: z.string().optional(),
   homeHref: href.optional(),
   links: z

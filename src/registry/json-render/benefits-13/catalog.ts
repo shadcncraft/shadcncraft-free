@@ -2,7 +2,7 @@ import { defineCatalog } from "@json-render/core";
 import { schema } from "@json-render/react/schema";
 import { z } from "zod";
 
-import { headingFields, text } from "../shared/schema";
+import { anchor, headingFields, text } from "../shared/schema";
 
 /** Icon keys of benefits13Icons in the block. Catalogs stay free of React imports. */
 export const benefitIcons = [
@@ -21,6 +21,7 @@ export const benefitIcons = [
 ] as const;
 
 export const propsSchema = z.strictObject({
+  anchor: anchor.optional(),
   ...headingFields,
   benefits: z
     .array(

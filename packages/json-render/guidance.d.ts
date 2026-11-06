@@ -24,6 +24,10 @@ export interface ComponentGuidance {
   pairsWith: string[];
   /** Facts about what always renders, where copy goes and how to bind events. */
   notes?: string[];
+  /** A list prop laid out in a fixed-column desktop grid. */
+  grid?: { prop: string; columns: number };
+  /** Props that replace the placeholder logo; with none set, check warns. */
+  logo?: string[];
   /** Events that may stay unbound without a warning. */
   optionalEvents?: string[];
   content: Record<string, ContentGuidance>;

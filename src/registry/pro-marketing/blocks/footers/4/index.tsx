@@ -11,6 +11,8 @@ export type Footer4Social = { platform: "linkedin" | "x"; href?: string };
 export type Footer4Props = {
   /** Replaces the placeholder logo. */
   logoSrc?: string;
+  /** Text wordmark shown when there is no logoSrc. */
+  brandName?: string;
   logoAlt?: string;
   homeHref?: string;
   description?: string;
@@ -24,6 +26,7 @@ const socialLabels = { linkedin: "LinkedIn", x: "X" };
 
 export function Footer4({
   logoSrc,
+  brandName,
   logoAlt = "Home",
   homeHref = "/",
   description = "Building tools that help teams work smarter and faster.",
@@ -43,6 +46,10 @@ export function Footer4({
               {/* Replace with your real logo  */}
               {logoSrc ? (
                 <img src={logoSrc} alt={logoAlt} className="h-8 w-auto" />
+              ) : brandName ? (
+                <span className="text-base font-semibold text-nowrap text-foreground">
+                  {brandName}
+                </span>
               ) : (
                 <PlaceholderLogo />
               )}

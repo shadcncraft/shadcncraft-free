@@ -23,6 +23,7 @@ function behaviour(def, g) {
         (required.length ? `; unbound ${required.map((e) => `on.${e}`).join(", ")} renders disabled.` : ".")
     );
   } else notes.push("No events; links use href props.");
+  if ("anchor" in (def.props?.shape ?? {})) notes.push('anchor sets the section id, so a link with href "#<anchor>" scrolls here.');
   notes.push(
     "Plain text only; unknown props are rejected; tagline and description accept \"\" to hide the line, other blank strings are rejected; omitted props render the block's Acme sample content (see samples.json), so set every prop the block shows; leaf block with no children."
   );

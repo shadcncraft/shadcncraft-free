@@ -11,6 +11,8 @@ import {
 } from "@/registry/pro-marketing/ui/section-heading";
 
 export type NewsletterSignup5Props = {
+  /** Section id, so links like "#pricing" can jump here. */
+  anchor?: string;
   heading?: string;
   description?: string;
   placeholder?: string;
@@ -24,6 +26,7 @@ export type NewsletterSignup5Props = {
 };
 
 export function NewsletterSignup5({
+  anchor,
   heading = "Stay in the loop",
   description = "Get insights, product updates, and productivity tips straight to your inbox.",
   placeholder = "email@example.com",
@@ -35,7 +38,7 @@ export function NewsletterSignup5({
   submitDisabled,
 }: NewsletterSignup5Props = {}) {
   return (
-    <section className="py-12 lg:py-20">
+    <section id={anchor} className="py-12 lg:py-20">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="flex flex-col justify-between gap-12 rounded-xl border bg-muted px-5 py-12 lg:flex-row lg:items-end lg:gap-16 lg:px-16 lg:py-20">
           {/* Section Heading */}

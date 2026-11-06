@@ -13,6 +13,8 @@ import {
 export type Team6Member = { name: string; title?: string; imageSrc?: string };
 
 export type Team6Props = {
+  /** Section id, so links like "#pricing" can jump here. */
+  anchor?: string;
   tagline?: string;
   heading?: string;
   description?: string;
@@ -20,13 +22,14 @@ export type Team6Props = {
 };
 
 export function Team6({
+  anchor,
   tagline = "Team",
   heading = "Meet The People Behind Acme AI",
   description = "We are a team of builders, designers, and problem-solvers dedicated to helping you work smarter every day.",
   members = teamMembersData,
 }: Team6Props = {}) {
   return (
-    <section className="py-12 lg:py-20">
+    <section id={anchor} className="py-12 lg:py-20">
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-5 lg:gap-16 lg:px-8">
         {/* Section Heading */}
         <SectionHeading alignment="center" className="mx-auto w-full max-w-3xl">

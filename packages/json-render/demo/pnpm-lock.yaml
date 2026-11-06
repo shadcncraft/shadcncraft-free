@@ -15,8 +15,8 @@ importers:
         specifier: 0.22.0
         version: 0.22.0(react@19.2.3)(zod@4.3.6)
       '@shadcncraft/json-render':
-        specifier: file:../shadcncraft-json-render-0.1.0-local.5.tgz
-        version: file:../shadcncraft-json-render-0.1.0-local.5.tgz(@json-render/core@0.22.0(zod@4.3.6))(@json-render/react@0.22.0(react@19.2.3)(zod@4.3.6))(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(zod@4.3.6)
+        specifier: file:../shadcncraft-json-render-0.1.0-local.6.tgz
+        version: file:../shadcncraft-json-render-0.1.0-local.6.tgz(@json-render/core@0.22.0(zod@4.3.6))(@json-render/react@0.22.0(react@19.2.3)(zod@4.3.6))(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(zod@4.3.6)
       react:
         specifier: 19.2.3
         version: 19.2.3
@@ -793,9 +793,9 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@shadcncraft/json-render@file:../shadcncraft-json-render-0.1.0-local.5.tgz':
-    resolution: {integrity: sha512-3yc8EtT/hQWSwsr0veaVM4i0i4oEbIPBSBA1/mWI4i3D2B6fyIlGcoUhvyhImdE8by3oovkDVQ0NR1YmJyYXWw==, tarball: file:../shadcncraft-json-render-0.1.0-local.5.tgz}
-    version: 0.1.0-local.5
+  '@shadcncraft/json-render@file:../shadcncraft-json-render-0.1.0-local.6.tgz':
+    resolution: {integrity: sha512-u5F+2mtlGGzH9P4ni82exDc3ugmxMg5lx8m2eDVnNaJ3a5NH7esUxWii+Op8kWh2bH31d4oq8wErmD8icXWYbw==, tarball: file:../shadcncraft-json-render-0.1.0-local.6.tgz}
+    version: 0.1.0-local.6
     hasBin: true
     peerDependencies:
       '@json-render/core': ^0.21.3 || ^0.22.0
@@ -1647,7 +1647,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.67.5':
     optional: true
 
-  '@shadcncraft/json-render@file:../shadcncraft-json-render-0.1.0-local.5.tgz(@json-render/core@0.22.0(zod@4.3.6))(@json-render/react@0.22.0(react@19.2.3)(zod@4.3.6))(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(zod@4.3.6)':
+  '@shadcncraft/json-render@file:../shadcncraft-json-render-0.1.0-local.6.tgz(@json-render/core@0.22.0(zod@4.3.6))(@json-render/react@0.22.0(react@19.2.3)(zod@4.3.6))(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(zod@4.3.6)':
     dependencies:
       '@json-render/core': 0.22.0(zod@4.3.6)
       '@json-render/react': 0.22.0(react@19.2.3)(zod@4.3.6)

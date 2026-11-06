@@ -495,6 +495,40 @@ export function validateSpec(spec, options = {}) {
     for (const extra of inverted.slice(1)) {
       add("warning", "multiple_inverted_panels", extra.child, extra.path, `${quote(extra.child)} is a second inverted panel on the page; ${quote(inverted[0].child)} is the first.`, "Keep one inverted panel, usually the closing CTA9.");
     }
+    // Content checks that span props: grids, logos, anchors and links.
+    const anchors = new Map();
+    const links = [];
+    const collectLinks = (value, id, parts) => {
+      if (Array.isArray(value)) value.forEach((item, index) => collectLinks(item, id, [...parts, index]));
+      else if (isObject(value) && !isExpression(value))
+        for (const [key, inner] of Object.entries(value)) {
+          if (typeof inner === "string" && /href$/i.test(key)) links.push({ id, href: inner, path: pointer("elements", id, "props", ...parts, key) });
+          else collectLinks(inner, id, [...parts, key]);
+        }
+    };
+    for (const id of ids) {
+      const element = elements[id];
+      if (!isObject(element) || !isObject(element.props)) continue;
+      const g = lint.components[element.type];
+      const props = element.props;
+      if (typeof props.anchor === "string") {
+        if (anchors.has(props.anchor)) add("warning", "duplicate_anchor", id, pointer("elements", id, "props", "anchor"), `Anchor ${quote(props.anchor)} is already used by ${quote(anchors.get(props.anchor))}.`, "Give each section a unique anchor.");
+        else anchors.set(props.anchor, id);
+      }
+      collectLinks(props, id, []);
+      if (g?.grid && Array.isArray(props[g.grid.prop]) && props[g.grid.prop].length % g.grid.columns !== 0) {
+        const count = props[g.grid.prop].length;
+        add("warning", "uneven_grid", id, pointer("elements", id, "props", g.grid.prop), `${element.type}.${g.grid.prop} has ${count} items, so the ${g.grid.columns}-column desktop grid has an empty space.`, `Use a multiple of ${g.grid.columns} (${g.grid.columns}, ${g.grid.columns * 2} or ${g.grid.columns * 3}).`);
+      }
+      if (Array.isArray(g?.logo) && !g.logo.some((key) => Object.hasOwn(props, key))) {
+        add("warning", "placeholder_logo", id, pointer("elements", id, "props"), `${element.type} has no ${g.logo.join(" or ")}, so it shows the Acme placeholder logo.`, `Set ${g.logo.map((key) => quote(key)).join(" (an image your app serves) or ")} (a text wordmark).`);
+      }
+    }
+    for (const link of links) {
+      if (link.href === "#") add("warning", "placeholder_link", link.id, link.path, `${quote(link.id)} has a placeholder link "#".`, "Set the real URL, a /path or a #section anchor.");
+      else if (link.href.startsWith("#") && !anchors.has(link.href.slice(1))) add("warning", "broken_anchor", link.id, link.path, `No section on this page has anchor ${quote(link.href.slice(1))}.`, anchors.size ? `Anchors on this page: ${[...anchors.keys()].join(", ")}. Or set "anchor": ${quote(link.href.slice(1))} on the target section.` : `Set "anchor": ${quote(link.href.slice(1))} on the target section.`);
+    }
+
     // Page chrome: navigation and banners open the page, the footer closes it.
     const page = typeof spec.root === "string" ? (childLists.get(spec.root) ?? []).filter(({ child }) => Object.hasOwn(elements, child)) : [];
     const seen = new Map();

@@ -26,6 +26,8 @@ export type Pricing8Plan = {
 };
 
 export type Pricing8Props = {
+  /** Section id, so links like "#pricing" can jump here. */
+  anchor?: string;
   tagline?: string;
   heading?: string;
   description?: string;
@@ -35,6 +37,7 @@ export type Pricing8Props = {
 };
 
 export function Pricing8({
+  anchor,
   tagline = "Pricing",
   heading = "Our Plans",
   description = "Acme Inc. has a plan designed to help you move faster.",
@@ -43,7 +46,7 @@ export function Pricing8({
   planActionsDisabled,
 }: Pricing8Props = {}) {
   return (
-    <section className="py-12 lg:py-20">
+    <section id={anchor} className="py-12 lg:py-20">
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-5 lg:gap-16 lg:px-8">
         {/* Section Heading */}
         <SectionHeading alignment="center" className="mx-auto w-full max-w-3xl">
@@ -53,7 +56,15 @@ export function Pricing8({
         </SectionHeading>
 
         {/* Pricing Cards */}
-        <div className="grid place-items-center items-stretch gap-6 lg:grid-cols-3">
+        <div
+          className={cn(
+            "grid place-items-center items-stretch gap-6",
+            plans.length === 1 && "mx-auto w-full max-w-xl",
+            plans.length === 2 && "mx-auto w-full max-w-4xl md:grid-cols-2",
+            plans.length === 3 && "lg:grid-cols-3",
+            plans.length >= 4 && "md:grid-cols-2 xl:grid-cols-4"
+          )}
+        >
           {plans.map((plan, index) => (
             <Card
               key={index}

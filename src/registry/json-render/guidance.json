@@ -17,8 +17,8 @@
       ],
       "pairsWith": ["Banner10", "Benefits13", "Pricing8"],
       "notes": [
+        "Set logoSrc (an image your app serves, e.g. /logo.svg) or brandName (a text wordmark). With neither, it shows the Acme placeholder logo.",
         "Mark the current page's link with active: true.",
-        "Without logoSrc it shows the Acme placeholder logo; set logoSrc and logoAlt.",
         "on.action is the outline button (sign in, log in, get started). Set actionLabel to \"\" to hide it."
       ],
       "content": {
@@ -39,8 +39,13 @@
         "logoAlt": {
           "idealChars": [2, 40],
           "maxChars": 60
+        },
+        "brandName": {
+          "idealChars": [2, 20],
+          "maxChars": 28
         }
-      }
+      },
+      "logo": ["logoSrc", "brandName"]
     },
     "Banner10": {
       "summary": "Thin announcement bar on a muted background: info icon, bold highlight, one-sentence message, optional link and a close button.",
@@ -123,6 +128,10 @@
             }
           }
         }
+      },
+      "grid": {
+        "prop": "benefits",
+        "columns": 3
       }
     },
     "Testimonials11": {
@@ -175,10 +184,14 @@
             }
           }
         }
+      },
+      "grid": {
+        "prop": "testimonials",
+        "columns": 3
       }
     },
     "Pricing8": {
-      "summary": "Centred heading over up to four plan cards: name, short description, large price with period, a checklist of features (optional tooltips) and a full-width button; the featured plan gets a primary border and solid button.",
+      "summary": "Centred heading over one to four plan cards: name, short description, large price with period, a checklist of features (optional tooltips) and a full-width button; the featured plan gets a primary border and solid button.",
       "layout": "centered",
       "surface": "plain",
       "media": "none",
@@ -192,6 +205,7 @@
       ],
       "pairsWith": ["FAQs4", "Testimonials11", "CTA9"],
       "notes": [
+        "The grid fits the plan count: 1 plan is centred, 2 sit side by side, 3 or 4 fill the row.",
         "price is display text: \"$29\", \"Free\" or \"Custom\". period defaults to \"/month\"; set \"\" to hide it.",
         "Mark one plan featured: true.",
         "on.select fires for every plan button. Bind selectedPlan to state ({\"$bindState\": \"/pricing/selectedPlan\"}) and pass {\"$state\": \"/pricing/selectedPlan\"} in the action params to know which plan was chosen."
@@ -210,7 +224,7 @@
           "maxChars": 200
         },
         "plans": {
-          "idealItems": [3, 3],
+          "idealItems": [2, 4],
           "maxItems": 4,
           "fields": {
             "name": {
@@ -329,6 +343,10 @@
             }
           }
         }
+      },
+      "grid": {
+        "prop": "members",
+        "columns": 3
       }
     },
     "NewsletterSignup5": {
@@ -449,8 +467,8 @@
       "avoidWhen": ["the host app already renders its own footer"],
       "pairsWith": ["CTA9", "NewsletterSignup5"],
       "notes": [
-        "Without logoSrc it shows the Acme placeholder logo; set logoSrc and logoAlt.",
-        "social items without href render as plain icons; set href or remove them."
+        "Set logoSrc (an image your app serves, e.g. /logo.svg) or brandName (a text wordmark). With neither, it shows the Acme placeholder logo.",
+        "social items without href render as plain icons; set href, or \"social\": [] to remove the icons."
       ],
       "content": {
         "description": {
@@ -470,8 +488,13 @@
         "copyright": {
           "idealChars": [15, 60],
           "maxChars": 90
+        },
+        "brandName": {
+          "idealChars": [2, 20],
+          "maxChars": 28
         }
-      }
+      },
+      "logo": ["logoSrc", "brandName"]
     }
   }
 }

@@ -18,6 +18,8 @@ export type TopNavigation5Link = { label: string; href?: string; active?: boolea
 export type TopNavigation5Props = {
   /** Replaces the placeholder logo. */
   logoSrc?: string;
+  /** Text wordmark shown when there is no logoSrc. */
+  brandName?: string;
   logoAlt?: string;
   homeHref?: string;
   links?: TopNavigation5Link[];
@@ -28,6 +30,7 @@ export type TopNavigation5Props = {
 
 export function TopNavigation5({
   logoSrc,
+  brandName,
   logoAlt = "Home",
   homeHref = "/",
   links = NAV_ITEMS,
@@ -62,6 +65,10 @@ export function TopNavigation5({
           <a href={homeHref} aria-label="Go to home page">
             {logoSrc ? (
               <img src={logoSrc} alt={logoAlt} className="h-8 w-auto" />
+            ) : brandName ? (
+              <span className="text-base font-semibold text-nowrap text-foreground">
+                {brandName}
+              </span>
             ) : (
               <PlaceholderLogo />
             )}

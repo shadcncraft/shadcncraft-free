@@ -28,3 +28,8 @@ export const headingFields = {
   heading: text.optional(),
   description: optionalLine.optional(),
 };
+
+/** Section id for in-page links: a lowercase slug such as "pricing". */
+export const anchor = z
+  .string()
+  .regex(/^[a-z][a-z0-9-]*$/, 'Use a lowercase slug such as "pricing".');

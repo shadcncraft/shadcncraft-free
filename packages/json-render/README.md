@@ -18,8 +18,9 @@ Blocks: `TopNavigation5`, `Banner10`, `Benefits13`, `Testimonials11`,
 npm install @shadcncraft/json-render @json-render/core @json-render/react zod
 ```
 
-React 19, `@json-render/*` 0.21.3 or 0.22, and zod 4 are peers. The block
-dependencies (Radix primitives, lucide-react and so on) install with the package.
+React 19, `@json-render/*` (0.22 recommended; 0.21.3 works) and zod 4 are
+peers. The block dependencies (Radix primitives, lucide-react and so on) install
+with the package.
 
 ## Render a page
 
@@ -68,6 +69,13 @@ the rest of your app. The blocks read the standard shadcn theme variables
 (`--background`, `--primary`, `--radius` and so on) and `--font-sans`.
 `theme.css` supplies the shadcncraft Free values. Leave it out to use your
 app's theme. Add the `dark` class on a parent for dark mode.
+
+## Links, sections and logos
+
+Give a section an `anchor` and link to it with `"href": "#<anchor>"`. That's
+how a one-page site's navigation works (see `examples/pages/product-landing.json`).
+TopNavigation5 and Footer4 show `brandName` as a text wordmark, or `logoSrc` as
+an image your app serves; with neither they show a placeholder logo.
 
 ## Events and state
 

@@ -2,9 +2,10 @@ import { defineCatalog } from "@json-render/core";
 import { schema } from "@json-render/react/schema";
 import { z } from "zod";
 
-import { href, optionalLine, text } from "../shared/schema";
+import { anchor, href, optionalLine, text } from "../shared/schema";
 
 export const propsSchema = z.strictObject({
+  anchor: anchor.optional(),
   tagline: optionalLine.optional(),
   heading: text.optional(),
   items: z

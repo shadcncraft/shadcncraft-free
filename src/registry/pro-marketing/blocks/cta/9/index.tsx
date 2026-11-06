@@ -8,6 +8,8 @@ import {
 } from "@/registry/pro-marketing/ui/section-heading";
 
 export type CTA9Props = {
+  /** Section id, so links like "#pricing" can jump here. */
+  anchor?: string;
   heading?: string;
   description?: string;
   primaryLabel?: string;
@@ -16,6 +18,7 @@ export type CTA9Props = {
 };
 
 export function CTA9({
+  anchor,
   heading = "Ready to Work Smarter with AI?",
   description = "Start today and see how Acme Inc. helps you finish projects faster, with clarity and focus at every step.",
   primaryLabel = "Learn More",
@@ -23,7 +26,7 @@ export function CTA9({
   primaryDisabled,
 }: CTA9Props = {}) {
   return (
-    <section className="bg-primary py-12 text-primary-foreground lg:py-20">
+    <section id={anchor} className="bg-primary py-12 text-primary-foreground lg:py-20">
       <div className="mx-auto flex max-w-7xl flex-col gap-8 px-5 lg:px-8">
         <div className="mx-auto flex w-full max-w-3xl flex-col gap-8 text-center">
           {/* Section Heading */}
