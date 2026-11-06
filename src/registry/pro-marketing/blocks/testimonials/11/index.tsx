@@ -78,41 +78,41 @@ const testimonialsData: Testimonial11Item[] = [
       "From onboarding to ongoing support, Acme Inc. has impressed us every step of the way. The tools are robust, yet easy to use.",
     name: "Paula Rodriguez",
     role: "Head of Operations",
-    imageSrc: "https://free.shadcraft.com/assets/avatars/person-7.webp",
+    imageSrc: "https://assets.shadcncraft.com/registry/avatars/person-7.webp",
   },
   {
     quote:
       "I love how seamlessly everything integrates. Our workflows are smoother and our clients have noticed the difference.",
     name: "Marcus Lee",
     role: "Client Success Manager",
-    imageSrc: "https://free.shadcraft.com/assets/avatars/person-2.webp",
+    imageSrc: "https://assets.shadcncraft.com/registry/avatars/person-2.webp",
   },
   {
     quote:
       "The constant updates and improvements show Acme Inc. truly cares about its users. Highly recommended for any growing company.",
     name: "Vivian Chen",
     role: "CTO",
-    imageSrc: "https://free.shadcraft.com/assets/avatars/person-5.webp",
+    imageSrc: "https://assets.shadcncraft.com/registry/avatars/person-5.webp",
   },
   {
     quote:
       "Acme Inc. made our project launches less stressful and more organized. The dashboard is a delight to work with each day.",
     name: "Sean O'Malley",
     role: "Project Coordinator",
-    imageSrc: "https://free.shadcraft.com/assets/avatars/person-4.webp",
+    imageSrc: "https://assets.shadcncraft.com/registry/avatars/person-4.webp",
   },
   {
     quote:
       "The feedback from our own customers has been overwhelmingly positive ever since we switched to Acme's platform.",
     name: "Linda Kim",
     role: "Customer Experience Lead",
-    imageSrc: "https://free.shadcraft.com/assets/avatars/person-3.webp",
+    imageSrc: "https://assets.shadcncraft.com/registry/avatars/person-3.webp",
   },
   {
     quote:
       "Powerful features, beautiful UI, and a support team that listens. I can't recommend Acme Inc. highly enough.",
     name: "Hanna Lee",
     role: "VP of Marketing",
-    imageSrc: "https://free.shadcraft.com/assets/avatars/person-6.webp",
+    imageSrc: "https://assets.shadcncraft.com/registry/avatars/person-6.webp",
   },
 ];

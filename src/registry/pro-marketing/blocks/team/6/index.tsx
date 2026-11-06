@@ -68,31 +68,31 @@ const teamMembersData: Team6Member[] = [
   {
     name: "Sophie Tan",
     title: "Founder & CEO",
-    imageSrc: "https://free.shadcraft.com/assets/avatars/person-1.webp",
+    imageSrc: "https://assets.shadcncraft.com/registry/avatars/person-1.webp",
   },
   {
     name: "Liam Johnson",
     title: "Chief Technology Officer",
-    imageSrc: "https://free.shadcraft.com/assets/avatars/person-2.webp",
+    imageSrc: "https://assets.shadcncraft.com/registry/avatars/person-2.webp",
   },
   {
     name: "Ava Smith",
     title: "Head of Marketing",
-    imageSrc: "https://free.shadcraft.com/assets/avatars/person-3.webp",
+    imageSrc: "https://assets.shadcncraft.com/registry/avatars/person-3.webp",
   },
   {
     name: "Noah Brown",
     title: "Product Manager",
-    imageSrc: "https://free.shadcraft.com/assets/avatars/person-4.webp",
+    imageSrc: "https://assets.shadcncraft.com/registry/avatars/person-4.webp",
   },
   {
     name: "Emma Wilson",
     title: "Lead Designer",
-    imageSrc: "https://free.shadcraft.com/assets/avatars/person-5.webp",
+    imageSrc: "https://assets.shadcncraft.com/registry/avatars/person-5.webp",
   },
   {
     name: "Oliver Lee",
     title: "Data Analyst",
-    imageSrc: "https://free.shadcraft.com/assets/avatars/person-6.webp",
+    imageSrc: "https://assets.shadcncraft.com/registry/avatars/person-6.webp",
   },
 ];

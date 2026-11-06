@@ -80,10 +80,10 @@ export function PageHeadingDemo() {
 }
 
 const avatars = [
-  "https://free.shadcraft.com/assets/avatars/person-3.webp",
-  "https://free.shadcraft.com/assets/avatars/person-1.webp",
-  "https://free.shadcraft.com/assets/avatars/person-6.webp",
-  "https://free.shadcraft.com/assets/avatars/person-5.webp",
-  "https://free.shadcraft.com/assets/avatars/person-4.webp",
-  "https://free.shadcraft.com/assets/avatars/person-2.webp",
+  "https://assets.shadcncraft.com/registry/avatars/person-3.webp",
+  "https://assets.shadcncraft.com/registry/avatars/person-1.webp",
+  "https://assets.shadcncraft.com/registry/avatars/person-6.webp",
+  "https://assets.shadcncraft.com/registry/avatars/person-5.webp",
+  "https://assets.shadcncraft.com/registry/avatars/person-4.webp",
+  "https://assets.shadcncraft.com/registry/avatars/person-2.webp",
 ];
