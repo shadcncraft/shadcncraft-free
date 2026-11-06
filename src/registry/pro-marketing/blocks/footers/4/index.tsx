@@ -4,7 +4,33 @@ import { RiTwitterXLine } from "react-icons/ri";
 import { Separator } from "@/components/ui/separator";
 import { PlaceholderLogo } from "@/registry/pro-marketing/ui/placeholder-logo";
 
-export function Footer4() {
+export type Footer4Link = { label: string; href?: string };
+export type Footer4Column = { title: string; links: Footer4Link[] };
+export type Footer4Social = { platform: "linkedin" | "x"; href?: string };
+
+export type Footer4Props = {
+  /** Replaces the placeholder logo. */
+  logoSrc?: string;
+  logoAlt?: string;
+  homeHref?: string;
+  description?: string;
+  social?: Footer4Social[];
+  columns?: Footer4Column[];
+  copyright?: string;
+};
+
+const socialIcons = { linkedin: FiLinkedin, x: RiTwitterXLine };
+const socialLabels = { linkedin: "LinkedIn", x: "X" };
+
+export function Footer4({
+  logoSrc,
+  logoAlt = "Home",
+  homeHref = "/",
+  description = "Building tools that help teams work smarter and faster.",
+  social = [{ platform: "linkedin" }, { platform: "x" }],
+  columns = navigationData,
+  copyright = "\u00a9 Copyright Acme Inc. 2025. All right reserved.",
+}: Footer4Props = {}) {
   return (
     <footer className="w-full bg-background py-12 lg:py-20" role="contentinfo">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-12 px-5 lg:gap-9 lg:px-8">
@@ -13,20 +39,38 @@ export function Footer4() {
         <div className="grid grid-cols-4 gap-x-5 gap-y-12 lg:flex-row lg:items-start lg:justify-between lg:gap-x-9">
           {/* Logo and Description */}
           <div className="col-span-full flex flex-col justify-between gap-9 lg:col-span-1">
-            <a href="/" aria-label="Go to home page">
+            <a href={homeHref} aria-label="Go to home page">
               {/* Replace with your real logo  */}
-              <PlaceholderLogo />
+              {logoSrc ? (
+                <img src={logoSrc} alt={logoAlt} className="h-8 w-auto" />
+              ) : (
+                <PlaceholderLogo />
+              )}
             </a>
 
-            <div className="flex flex-col gap-4">
-              <p className="text-sm text-pretty text-muted-foreground">
-                Building tools that help teams work smarter and faster.
-              </p>
-              <div className="flex items-center gap-2">
-                <FiLinkedin className="size-4" />
-                <RiTwitterXLine className="size-4" />
+            {(description || social.length > 0) && (
+              <div className="flex flex-col gap-4">
+                {description && (
+                  <p className="text-sm text-pretty text-muted-foreground">
+                    {description}
+                  </p>
+                )}
+                {social.length > 0 && (
+                  <div className="flex items-center gap-2">
+                    {social.map(({ platform, href }, index) => {
+                      const Icon = socialIcons[platform];
+                      return href ? (
+                        <a key={index} href={href} aria-label={socialLabels[platform]}>
+                          <Icon className="size-4" />
+                        </a>
+                      ) : (
+                        <Icon key={index} className="size-4" />
+                      );
+                    })}
+                  </div>
+                )}
               </div>
-            </div>
+            )}
           </div>
 
           {/* Navigation Links */}
@@ -34,15 +78,15 @@ export function Footer4() {
             className="col-span-full grid gap-12 md:grid-cols-2 lg:col-span-3 lg:grid-cols-3 lg:gap-9"
             aria-label="Footer navigation"
           >
-            {navigationData.map((section) => (
-              <div key={section.title} className="flex flex-col gap-2.5">
+            {columns.map((section, sectionIndex) => (
+              <div key={sectionIndex} className="flex flex-col gap-2.5">
                 <h3 className="text-sm font-medium text-muted-foreground">
                   {section.title}
                 </h3>
                 <ul className="flex flex-col gap-3">
-                  {section.links.map((link) => (
-                    <li key={link.label} className="text-base">
-                      <a href={link.href}>{link.label}</a>
+                  {section.links.map((link, linkIndex) => (
+                    <li key={linkIndex} className="text-base">
+                      <a href={link.href ?? "#"}>{link.label}</a>
                     </li>
                   ))}
                 </ul>
@@ -55,16 +99,14 @@ export function Footer4() {
 
         {/* Social Links and Copyright */}
         <div className="w-full">
-          <p className="text-sm text-muted-foreground">
-            &copy; Copyright Acme Inc. 2025. All right reserved.
-          </p>
+          <p className="text-sm text-muted-foreground">{copyright}</p>
         </div>
       </div>
     </footer>
   );
 }
 
-const navigationData = [
+const navigationData: Footer4Column[] = [
   {
     title: "Company",
     links: [

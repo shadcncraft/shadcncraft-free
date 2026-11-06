@@ -5,7 +5,23 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 
-export function Banner10() {
+export type Banner10Props = {
+  highlight?: string;
+  message?: string;
+  linkLabel?: string;
+  linkHref?: string;
+  dismissible?: boolean;
+  onDismiss?: () => void;
+};
+
+export function Banner10({
+  highlight = "New from Acme Inc:",
+  message = "AI Productivity Suite.",
+  linkLabel = "Check it out",
+  linkHref = "#",
+  dismissible = true,
+  onDismiss,
+}: Banner10Props = {}) {
   const [isVisible, setIsVisible] = useState(true);
 
   if (!isVisible) return null;
@@ -26,25 +42,33 @@ export function Banner10() {
               <AlertCircle className="mt-1 size-4 shrink-0 text-foreground" />
 
               <p className="text-pretty">
-                <span className="font-semibold">New from Acme Inc: </span>
-                AI Productivity Suite.{" "}
-                <a href="#" className="underline">
-                  Check it out
-                </a>
+                {highlight && <span className="font-semibold">{highlight} </span>}
+                {message}
+                {message && linkLabel && " "}
+                {linkLabel && (
+                  <a href={linkHref} className="underline">
+                    {linkLabel}
+                  </a>
+                )}
               </p>
             </div>
           </div>
 
           {/* Close Button */}
-          <Button
-            size="icon-sm"
-            className="size-6 shrink-0 max-lg:-mt-1 max-lg:-mr-1"
-            variant="ghost"
-            onClick={() => setIsVisible(false)}
-            aria-label="Close banner"
-          >
-            <X />
-          </Button>
+          {dismissible && (
+            <Button
+              size="icon-sm"
+              className="size-6 shrink-0 max-lg:-mt-1 max-lg:-mr-1"
+              variant="ghost"
+              onClick={() => {
+                setIsVisible(false);
+                onDismiss?.();
+              }}
+              aria-label="Close banner"
+            >
+              <X />
+            </Button>
+          )}
         </div>
       </div>
     </aside>

@@ -10,30 +10,41 @@ import {
   SectionHeadingTitle,
 } from "@/registry/pro-marketing/ui/section-heading";
 
-export function Team6() {
+export type Team6Member = { name: string; title?: string; imageSrc?: string };
+
+export type Team6Props = {
+  tagline?: string;
+  heading?: string;
+  description?: string;
+  members?: Team6Member[];
+};
+
+export function Team6({
+  tagline = "Team",
+  heading = "Meet The People Behind Acme AI",
+  description = "We are a team of builders, designers, and problem-solvers dedicated to helping you work smarter every day.",
+  members = teamMembersData,
+}: Team6Props = {}) {
   return (
     <section className="py-12 lg:py-20">
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-5 lg:gap-16 lg:px-8">
         {/* Section Heading */}
         <SectionHeading alignment="center" className="mx-auto w-full max-w-3xl">
-          <SectionHeadingTagline>Team</SectionHeadingTagline>
-          <SectionHeadingTitle>Meet The People Behind Acme AI</SectionHeadingTitle>
-          <SectionHeadingBody>
-            We are a team of builders, designers, and problem-solvers dedicated to helping
-            you work smarter every day.
-          </SectionHeadingBody>
+          {tagline && <SectionHeadingTagline>{tagline}</SectionHeadingTagline>}
+          <SectionHeadingTitle>{heading}</SectionHeadingTitle>
+          {description && <SectionHeadingBody>{description}</SectionHeadingBody>}
         </SectionHeading>
 
         {/* Team Members */}
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-9">
-          {teamMembersData.map((member) => (
+          {members.map((member, index) => (
             <ProfileCard
-              key={member.name}
+              key={index}
               variant="default"
               className="rounded-xl border bg-card p-2 shadow-sm"
             >
               <ProfileCardAvatar
-                src={member.image}
+                src={member.imageSrc ?? ""}
                 name={member.name}
                 className="size-32 rounded-lg"
               />
@@ -50,35 +61,35 @@ export function Team6() {
   );
 }
 
-const teamMembersData = [
+const teamMembersData: Team6Member[] = [
   {
     name: "Sophie Tan",
     title: "Founder & CEO",
-    image: "https://free.shadcraft.com/assets/avatars/person-1.webp",
+    imageSrc: "https://free.shadcraft.com/assets/avatars/person-1.webp",
   },
   {
     name: "Liam Johnson",
     title: "Chief Technology Officer",
-    image: "https://free.shadcraft.com/assets/avatars/person-2.webp",
+    imageSrc: "https://free.shadcraft.com/assets/avatars/person-2.webp",
   },
   {
     name: "Ava Smith",
     title: "Head of Marketing",
-    image: "https://free.shadcraft.com/assets/avatars/person-3.webp",
+    imageSrc: "https://free.shadcraft.com/assets/avatars/person-3.webp",
   },
   {
     name: "Noah Brown",
     title: "Product Manager",
-    image: "https://free.shadcraft.com/assets/avatars/person-4.webp",
+    imageSrc: "https://free.shadcraft.com/assets/avatars/person-4.webp",
   },
   {
     name: "Emma Wilson",
     title: "Lead Designer",
-    image: "https://free.shadcraft.com/assets/avatars/person-5.webp",
+    imageSrc: "https://free.shadcraft.com/assets/avatars/person-5.webp",
   },
   {
     name: "Oliver Lee",
     title: "Data Analyst",
-    image: "https://free.shadcraft.com/assets/avatars/person-6.webp",
+    imageSrc: "https://free.shadcraft.com/assets/avatars/person-6.webp",
   },
 ];

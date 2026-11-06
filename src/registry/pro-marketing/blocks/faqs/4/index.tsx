@@ -10,23 +10,41 @@ import {
   SectionHeadingTitle,
 } from "@/registry/pro-marketing/ui/section-heading";
 
-export function Faqs4() {
+export type Faqs4Item = { question: string; answer: string };
+
+export type Faqs4Props = {
+  tagline?: string;
+  heading?: string;
+  items?: Faqs4Item[];
+  supportText?: string;
+  supportLinkLabel?: string;
+  supportLinkHref?: string;
+};
+
+export function Faqs4({
+  tagline = "FAQ",
+  heading = "Your questions answered",
+  items = faqsData,
+  supportText = "Still have questions? We're here to help.",
+  supportLinkLabel = "Contact support",
+  supportLinkHref = "#",
+}: Faqs4Props = {}) {
   return (
     <section className="py-12 lg:py-20">
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-5 lg:gap-16 lg:px-8">
         {/* Section Heading */}
         <div className="mx-auto w-full max-w-2xl">
           <SectionHeading alignment="center">
-            <SectionHeadingTagline>FAQ</SectionHeadingTagline>
-            <SectionHeadingTitle>Your questions answered</SectionHeadingTitle>
+            {tagline && <SectionHeadingTagline>{tagline}</SectionHeadingTagline>}
+            <SectionHeadingTitle>{heading}</SectionHeadingTitle>
           </SectionHeading>
         </div>
 
         {/* FAQs Accordion */}
         <div className="mx-auto w-full max-w-2xl">
           <Accordion type="single" className="w-full">
-            {faqsData.map((faq) => (
-              <AccordionItem key={faq.question} value={faq.question}>
+            {items.map((faq, index) => (
+              <AccordionItem key={index} value={faq.question}>
                 <AccordionTrigger className="text-base">{faq.question}</AccordionTrigger>
                 <AccordionContent>{faq.answer}</AccordionContent>
               </AccordionItem>
@@ -35,20 +53,25 @@ export function Faqs4() {
         </div>
 
         {/* Contact CTA */}
-        <div className="mx-auto w-full max-w-2xl text-center">
-          <p className="text-muted-foreground">
-            Still have questions? We&apos;re here to help.{" "}
-            <a href="#" className="text-foreground underline">
-              Contact support
-            </a>
-          </p>
-        </div>
+        {(supportText || supportLinkLabel) && (
+          <div className="mx-auto w-full max-w-2xl text-center">
+            <p className="text-muted-foreground">
+              {supportText}
+              {supportText && supportLinkLabel && " "}
+              {supportLinkLabel && (
+                <a href={supportLinkHref} className="text-foreground underline">
+                  {supportLinkLabel}
+                </a>
+              )}
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );
 }
 
-const faqsData = [
+const faqsData: Faqs4Item[] = [
   {
     question: "What is Acme Inc.?",
     answer:

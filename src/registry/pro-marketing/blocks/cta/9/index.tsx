@@ -7,7 +7,21 @@ import {
   SectionHeadingTitle,
 } from "@/registry/pro-marketing/ui/section-heading";
 
-export function CTA9() {
+export type CTA9Props = {
+  heading?: string;
+  description?: string;
+  primaryLabel?: string;
+  onPrimaryAction?: () => void;
+  primaryDisabled?: boolean;
+};
+
+export function CTA9({
+  heading = "Ready to Work Smarter with AI?",
+  description = "Start today and see how Acme Inc. helps you finish projects faster, with clarity and focus at every step.",
+  primaryLabel = "Learn More",
+  onPrimaryAction,
+  primaryDisabled,
+}: CTA9Props = {}) {
   return (
     <section className="bg-primary py-12 text-primary-foreground lg:py-20">
       <div className="mx-auto flex max-w-7xl flex-col gap-8 px-5 lg:px-8">
@@ -15,18 +29,23 @@ export function CTA9() {
           {/* Section Heading */}
           <SectionHeading alignment="center">
             <SectionHeadingTitle className="text-primary-foreground">
-              Ready to Work Smarter with AI?
+              {heading}
             </SectionHeadingTitle>
-            <SectionHeadingBody className="text-primary-foreground/90">
-              Start today and see how Acme Inc. helps you finish projects faster, with
-              clarity and focus at every step.
-            </SectionHeadingBody>
+            {description && (
+              <SectionHeadingBody className="text-primary-foreground/90">
+                {description}
+              </SectionHeadingBody>
+            )}
           </SectionHeading>
 
           {/* CTA Buttons */}
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <Button className="bg-primary-foreground text-primary hover:bg-primary-foreground/90">
-              Learn More
+            <Button
+              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+              onClick={onPrimaryAction}
+              disabled={primaryDisabled}
+            >
+              {primaryLabel}
               <ArrowRightIcon className="size-4" />
             </Button>
           </div>

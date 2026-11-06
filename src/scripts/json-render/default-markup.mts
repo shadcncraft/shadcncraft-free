@@ -4,7 +4,8 @@
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { createElement, type ComponentType } from "react";
+
+import { type ComponentType,createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { TooltipProvider } from "@/components/ui/tooltip";

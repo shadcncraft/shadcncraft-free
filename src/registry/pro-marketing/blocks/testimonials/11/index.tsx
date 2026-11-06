@@ -12,25 +12,41 @@ import {
   SectionHeadingTitle,
 } from "@/registry/pro-marketing/ui/section-heading";
 
-export function Testimonial11() {
+export type Testimonial11Item = {
+  quote: string;
+  name: string;
+  role?: string;
+  imageSrc?: string;
+};
+
+export type Testimonial11Props = {
+  tagline?: string;
+  heading?: string;
+  description?: string;
+  testimonials?: Testimonial11Item[];
+};
+
+export function Testimonial11({
+  tagline = "Testimonials",
+  heading = "What Our Customers Say",
+  description = "Don't just take our word for it. See what teams are saying about Acme Inc.",
+  testimonials = testimonialsData,
+}: Testimonial11Props = {}) {
   return (
     <section className="py-12 lg:py-20">
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-5 lg:gap-16 lg:px-8">
         {/* Section Heading */}
         <SectionHeading alignment="center" className="mx-auto w-full max-w-3xl">
-          <SectionHeadingTagline>Testimonials</SectionHeadingTagline>
-          <SectionHeadingTitle>What Our Customers Say</SectionHeadingTitle>
-          <SectionHeadingBody>
-            Don&apos;t just take our word for it. See what teams are saying about Acme
-            Inc.
-          </SectionHeadingBody>
+          {tagline && <SectionHeadingTagline>{tagline}</SectionHeadingTagline>}
+          <SectionHeadingTitle>{heading}</SectionHeadingTitle>
+          {description && <SectionHeadingBody>{description}</SectionHeadingBody>}
         </SectionHeading>
 
         {/* Testimonials Grid */}
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {testimonialsData.map((testimonial) => (
+          {testimonials.map((testimonial, index) => (
             <div
-              key={testimonial.id}
+              key={index}
               className="group flex flex-col gap-6 rounded-lg border bg-card p-6"
             >
               <Quote className="size-6 rotate-180 text-muted-foreground transition-colors group-hover:text-foreground" />
@@ -39,7 +55,10 @@ export function Testimonial11() {
               </blockquote>
               <Quote className="size-6 self-end text-muted-foreground transition-colors group-hover:text-foreground" />
               <ProfileCard className="mt-auto">
-                <ProfileCardAvatar src={testimonial.imageSrc} name={testimonial.name} />
+                <ProfileCardAvatar
+                  src={testimonial.imageSrc ?? ""}
+                  name={testimonial.name}
+                />
                 <ProfileCardDetails name={testimonial.name} body={testimonial.role} />
               </ProfileCard>
             </div>
@@ -50,9 +69,8 @@ export function Testimonial11() {
   );
 }
 
-const testimonialsData = [
+const testimonialsData: Testimonial11Item[] = [
   {
-    id: 1,
     quote:
       "From onboarding to ongoing support, Acme Inc. has impressed us every step of the way. The tools are robust, yet easy to use.",
     name: "Paula Rodriguez",
@@ -60,7 +78,6 @@ const testimonialsData = [
     imageSrc: "https://free.shadcraft.com/assets/avatars/person-7.webp",
   },
   {
-    id: 2,
     quote:
       "I love how seamlessly everything integrates. Our workflows are smoother and our clients have noticed the difference.",
     name: "Marcus Lee",
@@ -68,7 +85,6 @@ const testimonialsData = [
     imageSrc: "https://free.shadcraft.com/assets/avatars/person-2.webp",
   },
   {
-    id: 3,
     quote:
       "The constant updates and improvements show Acme Inc. truly cares about its users. Highly recommended for any growing company.",
     name: "Vivian Chen",
@@ -76,7 +92,6 @@ const testimonialsData = [
     imageSrc: "https://free.shadcraft.com/assets/avatars/person-5.webp",
   },
   {
-    id: 4,
     quote:
       "Acme Inc. made our project launches less stressful and more organized. The dashboard is a delight to work with each day.",
     name: "Sean O'Malley",
@@ -84,7 +99,6 @@ const testimonialsData = [
     imageSrc: "https://free.shadcraft.com/assets/avatars/person-4.webp",
   },
   {
-    id: 5,
     quote:
       "The feedback from our own customers has been overwhelmingly positive ever since we switched to Acme's platform.",
     name: "Linda Kim",
@@ -92,7 +106,6 @@ const testimonialsData = [
     imageSrc: "https://free.shadcraft.com/assets/avatars/person-3.webp",
   },
   {
-    id: 6,
     quote:
       "Powerful features, beautiful UI, and a support team that listens. I can't recommend Acme Inc. highly enough.",
     name: "Hanna Lee",

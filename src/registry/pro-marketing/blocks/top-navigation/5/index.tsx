@@ -13,7 +13,28 @@ import { PlaceholderLogo } from "@/registry/pro-marketing/ui/placeholder-logo";
 // Change to 1024 + use lg: classes for 1024px breakpoint or whatever breakpoint you want to use
 const MOBILE_BREAKPOINT = 768;
 
-export function TopNavigation5() {
+export type TopNavigation5Link = { label: string; href?: string; active?: boolean };
+
+export type TopNavigation5Props = {
+  /** Replaces the placeholder logo. */
+  logoSrc?: string;
+  logoAlt?: string;
+  homeHref?: string;
+  links?: TopNavigation5Link[];
+  actionLabel?: string;
+  onAction?: () => void;
+  actionDisabled?: boolean;
+};
+
+export function TopNavigation5({
+  logoSrc,
+  logoAlt = "Home",
+  homeHref = "/",
+  links = NAV_ITEMS,
+  actionLabel = "Login",
+  onAction,
+  actionDisabled,
+}: TopNavigation5Props = {}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
@@ -38,8 +59,12 @@ export function TopNavigation5() {
         {/* Logo and Toggle Mobile Nav Button */}
         <div className="flex items-center justify-between">
           {/* Replace with actual logo */}
-          <a href="/" aria-label="Go to home page">
-            <PlaceholderLogo />
+          <a href={homeHref} aria-label="Go to home page">
+            {logoSrc ? (
+              <img src={logoSrc} alt={logoAlt} className="h-8 w-auto" />
+            ) : (
+              <PlaceholderLogo />
+            )}
           </a>
 
           {/* Toggle Mobile Nav Button - Visible on screen sizes < 768px */}
@@ -61,15 +86,15 @@ export function TopNavigation5() {
         {/* Desktop Navigation - Visible on screen sizes ≥ 768px */}
         <div className="hidden flex-1 justify-between gap-4 md:flex md:items-center">
           <nav className="mx-auto flex items-center gap-2">
-            {NAV_ITEMS.map((item) => {
+            {links.map((item) => {
               // Replace with actual active link detection
 
-              const isActive = item.href === "/pathname";
+              const isActive = item.active ?? false;
               return (
                 // Replace with actual navigation link
                 <a
                   key={item.label}
-                  href={item.href}
+                  href={item.href ?? "#"}
                   className={cn(
                     "rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent/50 hover:text-accent-foreground",
                     isActive && "bg-accent text-accent-foreground"
@@ -81,7 +106,13 @@ export function TopNavigation5() {
             })}
           </nav>
 
-          <ActionButtons />
+          {actionLabel && (
+            <ActionButtons
+              label={actionLabel}
+              onClick={onAction}
+              disabled={actionDisabled}
+            />
+          )}
         </div>
 
         {/* Mobile Navigation - Visible on screen sizes < 768px */}
@@ -100,15 +131,15 @@ export function TopNavigation5() {
           >
             <div className="flex flex-col gap-9">
               <nav className="flex flex-col gap-2">
-                {NAV_ITEMS.map((item) => {
+                {links.map((item) => {
                   // Replace with actual active link detection
 
-                  const isActive = item.href === "/pathname";
+                  const isActive = item.active ?? false;
                   return (
                     // Replace with actual navigation link
                     <a
                       key={item.label}
-                      href={item.href}
+                      href={item.href ?? "#"}
                       className={cn(
                         "rounded-md px-2 py-3.5 text-base font-medium transition-colors hover:bg-accent/50 hover:text-accent-foreground",
                         isActive && "bg-accent text-accent-foreground"
@@ -121,7 +152,13 @@ export function TopNavigation5() {
                 })}
               </nav>
 
-              <ActionButtons />
+              {actionLabel && (
+                <ActionButtons
+                  label={actionLabel}
+                  onClick={onAction}
+                  disabled={actionDisabled}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -130,17 +167,30 @@ export function TopNavigation5() {
   );
 }
 
-function ActionButtons() {
+function ActionButtons({
+  label,
+  onClick,
+  disabled,
+}: {
+  label: string;
+  onClick?: () => void;
+  disabled?: boolean;
+}) {
   return (
     <div className="flex flex-col gap-2 md:flex-row">
-      <Button variant="outline" className="w-full md:w-fit">
-        Login
+      <Button
+        variant="outline"
+        className="w-full md:w-fit"
+        onClick={onClick}
+        disabled={disabled}
+      >
+        {label}
       </Button>
     </div>
   );
 }
 
-const NAV_ITEMS = [
+const NAV_ITEMS: TopNavigation5Link[] = [
   { label: "Products", href: "#" },
   { label: "Solutions", href: "#" },
   { label: "Pricing", href: "#" },
