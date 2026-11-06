@@ -1,4 +1,4 @@
-import type { ComponentRenderer } from "@json-render/react";
+import type { BaseComponentProps } from "@json-render/react";
 import type { ReactElement, ReactNode } from "react";
 
 import type { StackGap } from "./layout-catalog.js";
@@ -15,5 +15,5 @@ export declare function Stack(props: StackProps): ReactElement;
 
 /** JSON Render adapters for the layout nodes. Already included in the package's `components`. */
 export declare const layoutComponents: {
-  Stack: ComponentRenderer;
+  Stack: (context: BaseComponentProps & { children?: ReactNode }) => ReactElement;
 };

@@ -1,6 +1,6 @@
 {
   "name": "@shadcncraft/json-render",
-  "version": "0.1.0-local.3",
+  "version": "0.1.0-local.5",
   "description": "shadcncraft Free blocks for JSON Render: a catalog agents compose pages from, with guidance and a checker.",
   "license": "Apache-2.0",
   "type": "module",

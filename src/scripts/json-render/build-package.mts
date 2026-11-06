@@ -57,7 +57,7 @@ type Module = {
   schema: boolean;
 };
 const modules = new Map<string, Module>();
-const stageRoot = await mkdtemp(path.join(root, "node_modules/.json-render-stage-"));
+const stageRoot = await mkdtemp(path.join(root, ".json-render-stage-"));
 
 function resolveSource(filename: string) {
   const found = [
@@ -440,16 +440,19 @@ export const components = { ${items.map((_, i) => `...c${i}`).join(", ")}, ...la
     path.join(packageRoot, "types/catalog.d.ts"),
     `import type { Catalog } from "@json-render/core";
 import type { Guidance } from "../guidance.js";
+/** JSON Render's React schema definition, as used by every catalog in this package. */
+type ReactSchema = typeof import("./entries/${items[0][0]}/catalog.js").catalog extends Catalog<infer TDef, any> ? TDef : never;
 export declare const guidance: Guidance;
 export declare const componentDefinitions: ${definitionTypes} &
   typeof import("../layout-catalog.js").layoutDefinitions;
-export declare const catalog: Catalog;
+export declare const catalog: Catalog<ReactSchema, { components: typeof componentDefinitions; actions: {} }>;
 `
   );
   await writeFile(
     path.join(packageRoot, "types/components.d.ts"),
-    `import type { ComponentRenderer } from "@json-render/react";
-export declare const components: Record<${items.map(([, c]) => JSON.stringify(c.component)).join(" | ")} | "Stack", ComponentRenderer>;
+    `/** Renderers for every block plus Stack. Pass to defineRegistry with the catalog. */
+export declare const components: ${items.map(([item]) => `typeof import("./entries/${item}.js").components`).join(" &\n  ")} &
+  typeof import("../layout.js").layoutComponents;
 `
   );
 
