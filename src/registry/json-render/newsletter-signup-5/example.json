@@ -1,0 +1,33 @@
+{
+  "root": "block",
+  "elements": {
+    "block": {
+      "type": "NewsletterSignup5",
+      "props": {
+        "heading": "Get the delivery digest",
+        "description": "One email a month with benchmarks and practical tips for engineering leads.",
+        "placeholder": "you@company.com",
+        "buttonLabel": "Subscribe",
+        "privacyNote": "No spam. Unsubscribe anytime.",
+        "email": {
+          "$bindState": "/newsletter/email"
+        }
+      },
+      "on": {
+        "submit": {
+          "action": "subscribe",
+          "params": {
+            "email": {
+              "$state": "/newsletter/email"
+            }
+          }
+        }
+      }
+    }
+  },
+  "state": {
+    "newsletter": {
+      "email": ""
+    }
+  }
+}

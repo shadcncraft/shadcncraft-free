@@ -1,0 +1,21 @@
+{
+  "root": "block",
+  "elements": {
+    "block": {
+      "type": "CTA9",
+      "props": {
+        "heading": "Start your free trial today",
+        "description": "Set up Lumen in minutes and see where your team's time really goes.",
+        "primaryLabel": "Start free trial"
+      },
+      "on": {
+        "primary": {
+          "action": "startTrial",
+          "params": {
+            "source": "cta-9"
+          }
+        }
+      }
+    }
+  }
+}

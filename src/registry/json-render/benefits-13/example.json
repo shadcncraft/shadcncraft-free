@@ -1,0 +1,30 @@
+{
+  "root": "block",
+  "elements": {
+    "block": {
+      "type": "Benefits13",
+      "props": {
+        "tagline": "Why Lumen",
+        "heading": "Everything your team needs to stay on track",
+        "description": "Clear priorities, honest forecasts and fewer meetings.",
+        "benefits": [
+          {
+            "title": "Clear priorities",
+            "description": "See what matters this week, ranked by impact.",
+            "icon": "prioritize"
+          },
+          {
+            "title": "Live forecasts",
+            "description": "Delivery dates that update as work moves.",
+            "icon": "analytics"
+          },
+          {
+            "title": "Works with your tools",
+            "description": "Connect GitHub, Linear and Jira in minutes.",
+            "icon": "integrate"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "root": "block",
+  "elements": {
+    "block": {
+      "type": "Contact11",
+      "props": {
+        "tagline": "Contact",
+        "heading": "Talk to our team",
+        "description": "Tell us about your team and we'll get back to you within one business day.",
+        "nameLabel": "Name",
+        "namePlaceholder": "Your name",
+        "emailLabel": "Work email",
+        "emailPlaceholder": "you@company.com",
+        "messageLabel": "How can we help?",
+        "messagePlaceholder": "Tell us about your team",
+        "consentText": "I agree to the",
+        "privacyLabel": "Privacy Policy",
+        "privacyHref": "/privacy",
+        "submitLabel": "Send message",
+        "values": {
+          "$bindState": "/contact"
+        }
+      },
+      "on": {
+        "submit": {
+          "action": "sendContact",
+          "params": {
+            "values": {
+              "$state": "/contact"
+            }
+          }
+        }
+      }
+    }
+  },
+  "state": {
+    "contact": {
+      "name": "",
+      "email": "",
+      "message": "",
+      "consent": false
+    }
+  }
+}

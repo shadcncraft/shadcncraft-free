@@ -1,0 +1,46 @@
+{
+  "cta-9": {
+    "component": "CTA9",
+    "events": ["primary"]
+  },
+  "testimonials-11": {
+    "component": "Testimonials11",
+    "events": []
+  },
+  "pricing-8": {
+    "component": "Pricing8",
+    "events": ["select"]
+  },
+  "faqs-4": {
+    "component": "FAQs4",
+    "events": []
+  },
+  "benefits-13": {
+    "component": "Benefits13",
+    "events": []
+  },
+  "team-6": {
+    "component": "Team6",
+    "events": []
+  },
+  "newsletter-signup-5": {
+    "component": "NewsletterSignup5",
+    "events": ["submit"]
+  },
+  "contact-11": {
+    "component": "Contact11",
+    "events": ["submit"]
+  },
+  "banner-10": {
+    "component": "Banner10",
+    "events": ["dismiss"]
+  },
+  "footer-4": {
+    "component": "Footer4",
+    "events": []
+  },
+  "top-navigation-5": {
+    "component": "TopNavigation5",
+    "events": ["action"]
+  }
+}

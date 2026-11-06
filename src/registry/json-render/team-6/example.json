@@ -1,0 +1,29 @@
+{
+  "root": "block",
+  "elements": {
+    "block": {
+      "type": "Team6",
+      "props": {
+        "tagline": "Team",
+        "heading": "The people behind Lumen",
+        "description": "A small team of engineers and designers who used to run delivery at scale.",
+        "members": [
+          {
+            "name": "Maya Chen",
+            "title": "Co-founder & CEO",
+            "imageSrc": "https://free.shadcraft.com/assets/avatars/person-1.webp"
+          },
+          {
+            "name": "David Okafor",
+            "title": "Co-founder & CTO",
+            "imageSrc": "https://free.shadcraft.com/assets/avatars/person-2.webp"
+          },
+          {
+            "name": "Lena Fischer",
+            "title": "Head of Design"
+          }
+        ]
+      }
+    }
+  }
+}

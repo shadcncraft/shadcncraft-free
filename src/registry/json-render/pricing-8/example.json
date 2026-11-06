@@ -1,0 +1,89 @@
+{
+  "root": "block",
+  "elements": {
+    "block": {
+      "type": "Pricing8",
+      "props": {
+        "tagline": "Pricing",
+        "heading": "Simple plans that grow with you",
+        "description": "Every plan includes unlimited dashboards and a 14-day trial.",
+        "plans": [
+          {
+            "name": "Starter",
+            "description": "For small teams getting started",
+            "price": "$12",
+            "period": "/user/month",
+            "features": [
+              {
+                "label": "Up to 10 users"
+              },
+              {
+                "label": "Core dashboards"
+              },
+              {
+                "label": "Email support"
+              }
+            ],
+            "ctaLabel": "Start trial"
+          },
+          {
+            "name": "Growth",
+            "description": "For teams scaling delivery",
+            "price": "$29",
+            "period": "/user/month",
+            "featured": true,
+            "features": [
+              {
+                "label": "Unlimited users"
+              },
+              {
+                "label": "Forecasts and alerts",
+                "tooltip": "Daily forecasts with Slack alerts"
+              },
+              {
+                "label": "Priority support"
+              }
+            ],
+            "ctaLabel": "Start trial"
+          },
+          {
+            "name": "Enterprise",
+            "description": "For organisations with custom needs",
+            "price": "Custom",
+            "period": "",
+            "features": [
+              {
+                "label": "SSO and audit logs"
+              },
+              {
+                "label": "Dedicated success manager"
+              },
+              {
+                "label": "Custom contracts"
+              }
+            ],
+            "ctaLabel": "Contact sales"
+          }
+        ],
+        "selectedPlan": {
+          "$bindState": "/pricing/selectedPlan"
+        }
+      },
+      "on": {
+        "select": {
+          "action": "choosePlan",
+          "params": {
+            "plan": {
+              "$state": "/pricing/selectedPlan"
+            }
+          }
+        }
+      }
+    }
+  },
+  "state": {
+    "pricing": {
+      "selectedPlan": ""
+    }
+  }
+}

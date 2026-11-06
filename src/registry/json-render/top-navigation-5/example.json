@@ -1,0 +1,39 @@
+{
+  "root": "block",
+  "elements": {
+    "block": {
+      "type": "TopNavigation5",
+      "props": {
+        "logoSrc": "/logo.svg",
+        "logoAlt": "Lumen",
+        "homeHref": "/",
+        "links": [
+          {
+            "label": "Features",
+            "href": "/features"
+          },
+          {
+            "label": "Pricing",
+            "href": "/pricing",
+            "active": true
+          },
+          {
+            "label": "Customers",
+            "href": "/customers"
+          },
+          {
+            "label": "Docs",
+            "href": "/docs"
+          }
+        ],
+        "actionLabel": "Sign in"
+      },
+      "on": {
+        "action": {
+          "action": "signIn",
+          "params": {}
+        }
+      }
+    }
+  }
+}

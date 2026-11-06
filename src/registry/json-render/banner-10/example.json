@@ -1,0 +1,23 @@
+{
+  "root": "block",
+  "elements": {
+    "block": {
+      "type": "Banner10",
+      "props": {
+        "highlight": "New:",
+        "message": "Forecasts now update every hour.",
+        "linkLabel": "See what's new",
+        "linkHref": "/changelog",
+        "dismissible": true
+      },
+      "on": {
+        "dismiss": {
+          "action": "dismissBanner",
+          "params": {
+            "id": "hourly-forecasts"
+          }
+        }
+      }
+    }
+  }
+}

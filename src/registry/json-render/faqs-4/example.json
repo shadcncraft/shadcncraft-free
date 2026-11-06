@@ -1,0 +1,29 @@
+{
+  "root": "block",
+  "elements": {
+    "block": {
+      "type": "FAQs4",
+      "props": {
+        "tagline": "FAQ",
+        "heading": "Questions, answered",
+        "items": [
+          {
+            "question": "How long does setup take?",
+            "answer": "Most teams connect their tools and see their first dashboard within an hour."
+          },
+          {
+            "question": "Can I cancel anytime?",
+            "answer": "Yes. Plans are month to month and you can cancel from your account settings."
+          },
+          {
+            "question": "Do you offer discounts for nonprofits?",
+            "answer": "Yes, registered nonprofits get 50% off any plan. Contact us to apply."
+          }
+        ],
+        "supportText": "Can't find what you're looking for?",
+        "supportLinkLabel": "Talk to our team",
+        "supportLinkHref": "/contact"
+      }
+    }
+  }
+}
