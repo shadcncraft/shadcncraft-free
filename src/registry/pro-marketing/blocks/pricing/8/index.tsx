@@ -1,11 +1,10 @@
 "use client";
 
-import { TooltipContent } from "@radix-ui/react-tooltip";
 import { Check, Info } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import {
   SectionHeading,

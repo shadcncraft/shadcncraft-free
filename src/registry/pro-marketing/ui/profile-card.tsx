@@ -27,6 +27,13 @@ function ProfileCard({
   );
 }
 
+/** "Paula Rodriguez" → "PR"; a single word keeps its first two letters. */
+function initials(name?: string) {
+  const words = name?.trim().split(/\s+/).filter(Boolean) ?? [];
+  if (words.length < 2) return words[0]?.slice(0, 2) ?? "";
+  return words[0][0] + words[words.length - 1][0];
+}
+
 function ProfileCardAvatar({
   className,
   size = "default",
@@ -57,7 +64,7 @@ function ProfileCardAvatar({
         className="size-full rounded-none object-cover"
       />
       <AvatarFallback className="size-full rounded-none uppercase">
-        {name?.slice(0, 2) || "ME"}
+        {initials(name) || "ME"}
       </AvatarFallback>
     </Avatar>
   );
