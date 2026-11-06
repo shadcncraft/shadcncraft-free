@@ -51,12 +51,12 @@
           {
             "name": "Maya Chen",
             "title": "Co-founder & CEO",
-            "imageSrc": "https://free.shadcraft.com/assets/avatars/person-1.webp"
+            "imageSrc": "https://assets.shadcncraft.com/registry/avatars/person-1.webp"
           },
           {
             "name": "David Okafor",
             "title": "Co-founder & CTO",
-            "imageSrc": "https://free.shadcraft.com/assets/avatars/person-2.webp"
+            "imageSrc": "https://assets.shadcncraft.com/registry/avatars/person-2.webp"
           },
           {
             "name": "Lena Fischer",
@@ -89,7 +89,7 @@
             "quote": "We cut our weekly status meeting in half because everyone already sees the same picture.",
             "name": "Priya Raman",
             "role": "VP Engineering, Fieldwork",
-            "imageSrc": "https://free.shadcraft.com/assets/avatars/person-3.webp"
+            "imageSrc": "https://assets.shadcncraft.com/registry/avatars/person-3.webp"
           },
           {
             "quote": "Setup took an afternoon. The insights paid for it in the first sprint.",
@@ -100,7 +100,7 @@
             "quote": "Finally a dashboard my engineers open without being asked.",
             "name": "Ana Souza",
             "role": "CTO, Brightline",
-            "imageSrc": "https://free.shadcraft.com/assets/avatars/person-6.webp"
+            "imageSrc": "https://assets.shadcncraft.com/registry/avatars/person-6.webp"
           }
         ]
       },

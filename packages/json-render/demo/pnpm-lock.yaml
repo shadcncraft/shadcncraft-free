@@ -15,8 +15,8 @@ importers:
         specifier: 0.22.0
         version: 0.22.0(react@19.2.3)(zod@4.3.6)
       '@shadcncraft/json-render':
-        specifier: file:../shadcncraft-json-render-0.1.0-local.2.tgz
-        version: file:../shadcncraft-json-render-0.1.0-local.2.tgz(@json-render/core@0.22.0(zod@4.3.6))(@json-render/react@0.22.0(react@19.2.3)(zod@4.3.6))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(zod@4.3.6)
+        specifier: file:../shadcncraft-json-render-0.1.0-local.3.tgz
+        version: file:../shadcncraft-json-render-0.1.0-local.3.tgz(@json-render/core@0.22.0(zod@4.3.6))(@json-render/react@0.22.0(react@19.2.3)(zod@4.3.6))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(zod@4.3.6)
       react:
         specifier: 19.2.3
         version: 19.2.3
@@ -784,9 +784,9 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@shadcncraft/json-render@file:../shadcncraft-json-render-0.1.0-local.2.tgz':
-    resolution: {integrity: sha512-X9+A4DJHs6YDecTlEEF7kwIy0hbnHJuktUmVztQ+LrCL2P3vwuwBUrSCUnBlqZAdGyWHbFVmQ9LozlHPFav/Cw==, tarball: file:../shadcncraft-json-render-0.1.0-local.2.tgz}
-    version: 0.1.0-local.2
+  '@shadcncraft/json-render@file:../shadcncraft-json-render-0.1.0-local.3.tgz':
+    resolution: {integrity: sha512-ZQO+vRgeCoamtYPZZ2v2RMI0augs6E7Y6o2zRO32g6LUbqcahI942gMvIK+Gm25DYorXUxw+qXJPyvryZNTGzw==, tarball: file:../shadcncraft-json-render-0.1.0-local.3.tgz}
+    version: 0.1.0-local.3
     hasBin: true
     peerDependencies:
       '@json-render/core': ^0.21.3 || ^0.22.0
@@ -1550,7 +1550,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.67.5':
     optional: true
 
-  '@shadcncraft/json-render@file:../shadcncraft-json-render-0.1.0-local.2.tgz(@json-render/core@0.22.0(zod@4.3.6))(@json-render/react@0.22.0(react@19.2.3)(zod@4.3.6))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(zod@4.3.6)':
+  '@shadcncraft/json-render@file:../shadcncraft-json-render-0.1.0-local.3.tgz(@json-render/core@0.22.0(zod@4.3.6))(@json-render/react@0.22.0(react@19.2.3)(zod@4.3.6))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(zod@4.3.6)':
     dependencies:
       '@json-render/core': 0.22.0(zod@4.3.6)
       '@json-render/react': 0.22.0(react@19.2.3)(zod@4.3.6)
