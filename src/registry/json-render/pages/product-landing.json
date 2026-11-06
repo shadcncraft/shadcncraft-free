@@ -1,0 +1,343 @@
+{
+  "root": "page",
+  "elements": {
+    "page": {
+      "type": "Stack",
+      "props": {},
+      "children": [
+        "banner",
+        "nav",
+        "benefits",
+        "testimonials",
+        "pricing",
+        "faqs",
+        "cta",
+        "footer"
+      ]
+    },
+    "banner": {
+      "type": "Banner10",
+      "props": {
+        "highlight": "New:",
+        "message": "Forecasts now update every hour.",
+        "linkLabel": "See what's new",
+        "linkHref": "/changelog",
+        "dismissible": true
+      },
+      "children": [],
+      "on": {
+        "dismiss": {
+          "action": "dismissBanner",
+          "params": {
+            "id": "hourly-forecasts"
+          }
+        }
+      }
+    },
+    "nav": {
+      "type": "TopNavigation5",
+      "props": {
+        "logoSrc": "/logo.svg",
+        "logoAlt": "Lumen",
+        "homeHref": "/",
+        "links": [
+          {
+            "label": "Features",
+            "href": "/features",
+            "active": true
+          },
+          {
+            "label": "Pricing",
+            "href": "/pricing"
+          },
+          {
+            "label": "About",
+            "href": "/about"
+          },
+          {
+            "label": "Contact",
+            "href": "/contact"
+          }
+        ],
+        "actionLabel": "Sign in"
+      },
+      "children": [],
+      "on": {
+        "action": {
+          "action": "signIn",
+          "params": {}
+        }
+      }
+    },
+    "benefits": {
+      "type": "Benefits13",
+      "props": {
+        "tagline": "Why Lumen",
+        "heading": "Everything your team needs to stay on track",
+        "description": "Clear priorities, honest forecasts and fewer meetings.",
+        "benefits": [
+          {
+            "title": "Clear priorities",
+            "description": "See what matters this week, ranked by impact.",
+            "icon": "prioritize"
+          },
+          {
+            "title": "Live forecasts",
+            "description": "Delivery dates that update as work moves.",
+            "icon": "analytics"
+          },
+          {
+            "title": "Works with your tools",
+            "description": "Connect GitHub, Linear and Jira in minutes.",
+            "icon": "integrate"
+          },
+          {
+            "title": "Fewer status meetings",
+            "description": "Everyone sees the same live picture, so updates happen async.",
+            "icon": "time"
+          },
+          {
+            "title": "Secure by default",
+            "description": "SSO, audit logs and encryption at rest on every plan.",
+            "icon": "security"
+          },
+          {
+            "title": "Built for scale",
+            "description": "From one team to the whole engineering org without reconfiguring.",
+            "icon": "launch"
+          }
+        ]
+      },
+      "children": []
+    },
+    "testimonials": {
+      "type": "Testimonials11",
+      "props": {
+        "tagline": "Customers",
+        "heading": "Teams that ship with Lumen",
+        "description": "Product and engineering leads on what changed after switching.",
+        "testimonials": [
+          {
+            "quote": "We cut our weekly status meeting in half because everyone already sees the same picture.",
+            "name": "Priya Raman",
+            "role": "VP Engineering, Fieldwork",
+            "imageSrc": "https://free.shadcraft.com/assets/avatars/person-3.webp"
+          },
+          {
+            "quote": "Setup took an afternoon. The insights paid for it in the first sprint.",
+            "name": "Tom Becker",
+            "role": "Head of Product, Orbit"
+          },
+          {
+            "quote": "Finally a dashboard my engineers open without being asked.",
+            "name": "Ana Souza",
+            "role": "CTO, Brightline",
+            "imageSrc": "https://free.shadcraft.com/assets/avatars/person-6.webp"
+          }
+        ]
+      },
+      "children": []
+    },
+    "pricing": {
+      "type": "Pricing8",
+      "props": {
+        "tagline": "Pricing",
+        "heading": "Simple plans that grow with you",
+        "description": "Every plan includes unlimited dashboards and a 14-day trial.",
+        "plans": [
+          {
+            "name": "Starter",
+            "description": "For small teams getting started",
+            "price": "$12",
+            "period": "/user/month",
+            "features": [
+              {
+                "label": "Up to 10 users"
+              },
+              {
+                "label": "Core dashboards"
+              },
+              {
+                "label": "Email support"
+              }
+            ],
+            "ctaLabel": "Start trial"
+          },
+          {
+            "name": "Growth",
+            "description": "For teams scaling delivery",
+            "price": "$29",
+            "period": "/user/month",
+            "featured": true,
+            "features": [
+              {
+                "label": "Unlimited users"
+              },
+              {
+                "label": "Forecasts and alerts",
+                "tooltip": "Daily forecasts with Slack alerts"
+              },
+              {
+                "label": "Priority support"
+              }
+            ],
+            "ctaLabel": "Start trial"
+          },
+          {
+            "name": "Enterprise",
+            "description": "For organisations with custom needs",
+            "price": "Custom",
+            "period": "",
+            "features": [
+              {
+                "label": "SSO and audit logs"
+              },
+              {
+                "label": "Dedicated success manager"
+              },
+              {
+                "label": "Custom contracts"
+              }
+            ],
+            "ctaLabel": "Contact sales"
+          }
+        ],
+        "selectedPlan": {
+          "$bindState": "/pricing/selectedPlan"
+        }
+      },
+      "children": [],
+      "on": {
+        "select": {
+          "action": "choosePlan",
+          "params": {
+            "plan": {
+              "$state": "/pricing/selectedPlan"
+            }
+          }
+        }
+      }
+    },
+    "faqs": {
+      "type": "FAQs4",
+      "props": {
+        "tagline": "FAQ",
+        "heading": "Questions, answered",
+        "items": [
+          {
+            "question": "How long does setup take?",
+            "answer": "Most teams connect their tools and see their first dashboard within an hour."
+          },
+          {
+            "question": "Can I cancel anytime?",
+            "answer": "Yes. Plans are month to month and you can cancel from your account settings."
+          },
+          {
+            "question": "Do you offer discounts for nonprofits?",
+            "answer": "Yes, registered nonprofits get 50% off any plan. Contact us to apply."
+          },
+          {
+            "question": "Which tools do you integrate with?",
+            "answer": "GitHub, GitLab, Linear, Jira and Slack today, with more on the way."
+          }
+        ],
+        "supportText": "Can't find what you're looking for?",
+        "supportLinkLabel": "Talk to our team",
+        "supportLinkHref": "/contact"
+      },
+      "children": []
+    },
+    "cta": {
+      "type": "CTA9",
+      "props": {
+        "heading": "Start your free trial today",
+        "description": "Set up Lumen in minutes and see where your team's time really goes.",
+        "primaryLabel": "Start free trial"
+      },
+      "children": [],
+      "on": {
+        "primary": {
+          "action": "startTrial",
+          "params": {
+            "source": "cta-9"
+          }
+        }
+      }
+    },
+    "footer": {
+      "type": "Footer4",
+      "props": {
+        "logoSrc": "/logo.svg",
+        "logoAlt": "Lumen",
+        "homeHref": "/",
+        "description": "Delivery insights for engineering teams.",
+        "social": [
+          {
+            "platform": "linkedin",
+            "href": "https://www.linkedin.com/company/example"
+          },
+          {
+            "platform": "x",
+            "href": "https://x.com/example"
+          }
+        ],
+        "columns": [
+          {
+            "title": "Product",
+            "links": [
+              {
+                "label": "Features",
+                "href": "/features"
+              },
+              {
+                "label": "Pricing",
+                "href": "/pricing"
+              },
+              {
+                "label": "Changelog",
+                "href": "/changelog"
+              }
+            ]
+          },
+          {
+            "title": "Company",
+            "links": [
+              {
+                "label": "About",
+                "href": "/about"
+              },
+              {
+                "label": "Careers",
+                "href": "/careers"
+              },
+              {
+                "label": "Contact",
+                "href": "/contact"
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Privacy",
+                "href": "/privacy"
+              },
+              {
+                "label": "Terms",
+                "href": "/terms"
+              }
+            ]
+          }
+        ],
+        "copyright": "© 2026 Lumen Labs Ltd. All rights reserved."
+      },
+      "children": []
+    }
+  },
+  "state": {
+    "pricing": {
+      "selectedPlan": ""
+    }
+  }
+}

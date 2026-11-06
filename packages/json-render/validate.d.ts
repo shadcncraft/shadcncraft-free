@@ -1,7 +1,8 @@
 import type { z } from "zod";
-import type { componentDefinitions } from "./types/catalog.js";
-import type { layoutDefinitions } from "./layout-catalog.js";
+
 import type { Guidance } from "./guidance.js";
+import type { layoutDefinitions } from "./layout-catalog.js";
+import type { componentDefinitions } from "./types/catalog.js";
 
 export type { ComponentGuidance, ContentGuidance, Guidance } from "./guidance.js";
 

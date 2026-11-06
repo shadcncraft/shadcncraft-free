@@ -87,7 +87,11 @@ for (const [item, contract] of Object.entries(contracts)) {
       createElement(
         JSONUIProvider,
         // Children are passed as the third argument; the props type still lists them.
-        { registry, initialState: spec.state ?? {}, handlers } as unknown as JSONUIProviderProps,
+        {
+          registry,
+          initialState: spec.state ?? {},
+          handlers,
+        } as unknown as JSONUIProviderProps,
         createElement(Renderer, { spec, registry })
       )
     )

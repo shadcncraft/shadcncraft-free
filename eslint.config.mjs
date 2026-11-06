@@ -44,6 +44,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Generated package output and its standalone consumer demo.
+    "packages/json-render/{modules,types,styles,data,examples}/**",
+    "packages/json-render/demo/**",
   ]),
 ]);
 

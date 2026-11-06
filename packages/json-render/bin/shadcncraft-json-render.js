@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 import { readFileSync } from "node:fs";
+
 import { z } from "zod";
+
 import { definitions, eventsFor, formatIssues, guidance as packageGuidance, samples, validateSpec } from "../validate.js";
 
 const usage = `Usage:

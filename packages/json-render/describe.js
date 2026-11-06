@@ -24,7 +24,7 @@ function behaviour(def, g) {
     );
   } else notes.push("No events; links use href props.");
   notes.push(
-    "Plain text only; blank strings and unknown props are rejected; omitted props render the block's Acme sample content (see samples.json), so set every prop the block shows; leaf block with no children."
+    "Plain text only; unknown props are rejected; tagline and description accept \"\" to hide the line, other blank strings are rejected; omitted props render the block's Acme sample content (see samples.json), so set every prop the block shows; leaf block with no children."
   );
   return notes.join(" ");
 }

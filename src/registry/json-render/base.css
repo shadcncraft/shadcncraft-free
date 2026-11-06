@@ -1,0 +1,93 @@
+/*
+ * Scoped base styles for package blocks. The package ships no global reset, so
+ * these give every element inside a block (anything under a `scraft:` class)
+ * the Tailwind preflight defaults the blocks were designed with, without
+ * touching the rest of the host page. Low priority: the base layer, inside
+ * :where(), so utilities and host styles win.
+ */
+@layer base {
+  :where([class*="scraft:"]) {
+    font-family: var(--font-sans, inherit);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  :where([class*="scraft:"], [class*="scraft:"] *),
+  :where([class*="scraft:"], [class*="scraft:"] *)::before,
+  :where([class*="scraft:"], [class*="scraft:"] *)::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
+    border-color: var(--border, currentcolor);
+    outline-color: color-mix(in oklab, var(--ring, currentcolor) 50%, transparent);
+  }
+  :where([class*="scraft:"], [class*="scraft:"] *):where(h1, h2, h3, h4, h5, h6) {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  :where([class*="scraft:"], [class*="scraft:"] *):where(a) {
+    color: inherit;
+    text-decoration: inherit;
+  }
+  :where([class*="scraft:"], [class*="scraft:"] *):where(b, strong) {
+    font-weight: bolder;
+  }
+  :where([class*="scraft:"], [class*="scraft:"] *):where(ol, ul, menu) {
+    list-style: none;
+  }
+  :where([class*="scraft:"], [class*="scraft:"] *):where(img, svg, video, canvas) {
+    display: block;
+    vertical-align: middle;
+  }
+  :where([class*="scraft:"], [class*="scraft:"] *):where(img, video) {
+    max-width: 100%;
+    height: auto;
+  }
+  :where([class*="scraft:"], [class*="scraft:"] *):where(
+    button,
+    input,
+    select,
+    textarea
+  ) {
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    border-radius: 0;
+    background-color: transparent;
+    opacity: 1;
+  }
+  :where([class*="scraft:"], [class*="scraft:"] *):where(button, [role="button"]) {
+    cursor: pointer;
+  }
+  :where([class*="scraft:"], [class*="scraft:"] *):where(button:disabled) {
+    cursor: default;
+  }
+  :where([class*="scraft:"], [class*="scraft:"] *)::placeholder {
+    opacity: 1;
+    color: color-mix(in oklab, currentcolor 50%, transparent);
+  }
+  :where([class*="scraft:"], [class*="scraft:"] *):where(textarea) {
+    resize: vertical;
+  }
+  :where([class*="scraft:"], [class*="scraft:"] *):where(
+    [hidden]:not([hidden="until-found"])
+  ) {
+    display: none !important;
+  }
+}
+
+/*
+ * Content resilience: copy written by agents varies in length, so balance
+ * multi-line headings (no single orphaned word) in every block.
+ */
+@layer base {
+  :where([class*="scraft:"]):where([data-slot="section-heading-title"], h2, h3) {
+    text-wrap: balance;
+  }
+  /* Long unbroken words (product names, URLs) wrap instead of overflowing. */
+  :where([class*="scraft:"]) {
+    overflow-wrap: anywhere;
+  }
+}

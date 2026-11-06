@@ -383,7 +383,8 @@
       "notes": [
         "Bind values to state ({\"$bindState\": \"/contact\"}) and pass {\"$state\": \"/contact\"} in the on.submit params; the action receives {name, email, message, consent}.",
         "Set consentText and privacyLabel to \"\" to remove the consent row.",
-        "Use one Contact11 per page: its fields have fixed ids."
+        "Use one Contact11 per page: its fields have fixed ids.",
+        "The heading sits in a narrow column; keep it under 44 characters."
       ],
       "content": {
         "tagline": {
@@ -391,8 +392,8 @@
           "maxChars": 24
         },
         "heading": {
-          "idealChars": [15, 45],
-          "maxChars": 70
+          "idealChars": [12, 32],
+          "maxChars": 44
         },
         "description": {
           "idealChars": [30, 120],

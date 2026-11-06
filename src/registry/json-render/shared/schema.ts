@@ -19,9 +19,12 @@ export const imageSrc = z.union([
     .regex(/^\/(?!\/)[^\s\\]*$/, "Use a root-relative path or an HTTP(S) image URL."),
 ]);
 
-/** Shared section heading fields. */
+/** An optional line: plain text, or "" to hide it. */
+export const optionalLine = z.string().trim();
+
+/** Shared section heading fields. tagline and description accept "" to hide them. */
 export const headingFields = {
-  tagline: text.optional(),
+  tagline: optionalLine.optional(),
   heading: text.optional(),
-  description: text.optional(),
+  description: optionalLine.optional(),
 };

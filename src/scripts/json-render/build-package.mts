@@ -9,7 +9,15 @@
  * Usage: pnpm json-render:build
  */
 import { existsSync } from "node:fs";
-import { copyFile, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import {
+  copyFile,
+  mkdir,
+  mkdtemp,
+  readdir,
+  readFile,
+  rm,
+  writeFile,
+} from "node:fs/promises";
 import path from "node:path";
 
 import tailwindcss from "@tailwindcss/postcss";
@@ -246,7 +254,8 @@ ${radii.join("\n")}
   ]).process(css, {
     from: path.join(stageRoot, "styles.css"),
   });
-  return result.css;
+  const base = await readFile(path.join(contractRoot, "base.css"), "utf8");
+  return `${result.css}\n${base}`;
 }
 
 try {
@@ -463,6 +472,15 @@ export declare const components: Record<${items.map(([, c]) => JSON.stringify(c.
     path.join(packageRoot, "schema.json"),
     JSON.stringify(schema, null, 2) + "\n"
   );
+  await mkdir(path.join(packageRoot, "examples/pages"), { recursive: true });
+  const pages = (await readdir(path.join(contractRoot, "pages"))).filter((f) =>
+    f.endsWith(".json")
+  );
+  for (const page of pages)
+    await copyFile(
+      path.join(contractRoot, "pages", page),
+      path.join(packageRoot, "examples/pages", page)
+    );
 
   // Manifest: hand-written base plus generated block exports and dependencies.
   const base = JSON.parse(

@@ -1,5 +1,6 @@
-import type { ReactElement, ReactNode } from "react";
 import type { ComponentRenderer } from "@json-render/react";
+import type { ReactElement, ReactNode } from "react";
+
 import type { StackGap } from "./layout-catalog.js";
 
 export * from "./layout-catalog.js";

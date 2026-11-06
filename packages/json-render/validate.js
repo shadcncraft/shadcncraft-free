@@ -1,10 +1,10 @@
 import { VisibilityConditionStrictSchema } from "@json-render/core";
 import { z } from "zod";
-import { componentDefinitions as blockDefinitions } from "./modules/catalog.js";
-import { layoutDefinitions } from "./layout-catalog.js";
 
 // Composition and editing guidance (guidance.json, mirrored as a module in data/).
 import packageGuidance from "./data/guidance.js";
+import { layoutDefinitions } from "./layout-catalog.js";
+import { componentDefinitions as blockDefinitions } from "./modules/catalog.js";
 
 /** The package's guidance.json, or null when it is not installed. */
 export const guidance = packageGuidance;

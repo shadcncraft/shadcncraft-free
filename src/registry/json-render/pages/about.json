@@ -1,0 +1,209 @@
+{
+  "root": "page",
+  "elements": {
+    "page": {
+      "type": "Stack",
+      "props": {},
+      "children": ["nav", "team", "testimonials", "newsletter", "footer"]
+    },
+    "nav": {
+      "type": "TopNavigation5",
+      "props": {
+        "logoSrc": "/logo.svg",
+        "logoAlt": "Lumen",
+        "homeHref": "/",
+        "links": [
+          {
+            "label": "Features",
+            "href": "/features"
+          },
+          {
+            "label": "Pricing",
+            "href": "/pricing"
+          },
+          {
+            "label": "About",
+            "href": "/about",
+            "active": true
+          },
+          {
+            "label": "Contact",
+            "href": "/contact"
+          }
+        ],
+        "actionLabel": "Sign in"
+      },
+      "children": [],
+      "on": {
+        "action": {
+          "action": "signIn",
+          "params": {}
+        }
+      }
+    },
+    "team": {
+      "type": "Team6",
+      "props": {
+        "tagline": "Team",
+        "heading": "The people behind Lumen",
+        "description": "A small team of engineers and designers who used to run delivery at scale.",
+        "members": [
+          {
+            "name": "Maya Chen",
+            "title": "Co-founder & CEO",
+            "imageSrc": "https://free.shadcraft.com/assets/avatars/person-1.webp"
+          },
+          {
+            "name": "David Okafor",
+            "title": "Co-founder & CTO",
+            "imageSrc": "https://free.shadcraft.com/assets/avatars/person-2.webp"
+          },
+          {
+            "name": "Lena Fischer",
+            "title": "Head of Design"
+          },
+          {
+            "name": "Sam Rivera",
+            "title": "Engineering Lead"
+          },
+          {
+            "name": "Grace Kim",
+            "title": "Customer Success"
+          },
+          {
+            "name": "Omar Haddad",
+            "title": "Data Scientist"
+          }
+        ]
+      },
+      "children": []
+    },
+    "testimonials": {
+      "type": "Testimonials11",
+      "props": {
+        "tagline": "Customers",
+        "heading": "Teams that ship with Lumen",
+        "description": "Product and engineering leads on what changed after switching.",
+        "testimonials": [
+          {
+            "quote": "We cut our weekly status meeting in half because everyone already sees the same picture.",
+            "name": "Priya Raman",
+            "role": "VP Engineering, Fieldwork",
+            "imageSrc": "https://free.shadcraft.com/assets/avatars/person-3.webp"
+          },
+          {
+            "quote": "Setup took an afternoon. The insights paid for it in the first sprint.",
+            "name": "Tom Becker",
+            "role": "Head of Product, Orbit"
+          },
+          {
+            "quote": "Finally a dashboard my engineers open without being asked.",
+            "name": "Ana Souza",
+            "role": "CTO, Brightline",
+            "imageSrc": "https://free.shadcraft.com/assets/avatars/person-6.webp"
+          }
+        ]
+      },
+      "children": []
+    },
+    "newsletter": {
+      "type": "NewsletterSignup5",
+      "props": {
+        "heading": "Get the delivery digest",
+        "description": "One email a month with benchmarks and practical tips for engineering leads.",
+        "placeholder": "you@company.com",
+        "buttonLabel": "Subscribe",
+        "privacyNote": "No spam. Unsubscribe anytime.",
+        "email": {
+          "$bindState": "/newsletter/email"
+        }
+      },
+      "children": [],
+      "on": {
+        "submit": {
+          "action": "subscribe",
+          "params": {
+            "email": {
+              "$state": "/newsletter/email"
+            }
+          }
+        }
+      }
+    },
+    "footer": {
+      "type": "Footer4",
+      "props": {
+        "logoSrc": "/logo.svg",
+        "logoAlt": "Lumen",
+        "homeHref": "/",
+        "description": "Delivery insights for engineering teams.",
+        "social": [
+          {
+            "platform": "linkedin",
+            "href": "https://www.linkedin.com/company/example"
+          },
+          {
+            "platform": "x",
+            "href": "https://x.com/example"
+          }
+        ],
+        "columns": [
+          {
+            "title": "Product",
+            "links": [
+              {
+                "label": "Features",
+                "href": "/features"
+              },
+              {
+                "label": "Pricing",
+                "href": "/pricing"
+              },
+              {
+                "label": "Changelog",
+                "href": "/changelog"
+              }
+            ]
+          },
+          {
+            "title": "Company",
+            "links": [
+              {
+                "label": "About",
+                "href": "/about"
+              },
+              {
+                "label": "Careers",
+                "href": "/careers"
+              },
+              {
+                "label": "Contact",
+                "href": "/contact"
+              }
+            ]
+          },
+          {
+            "title": "Legal",
+            "links": [
+              {
+                "label": "Privacy",
+                "href": "/privacy"
+              },
+              {
+                "label": "Terms",
+                "href": "/terms"
+              }
+            ]
+          }
+        ],
+        "copyright": "© 2026 Lumen Labs Ltd. All rights reserved."
+      },
+      "children": []
+    }
+  },
+  "state": {
+    "newsletter": {
+      "email": ""
+    }
+  }
+}

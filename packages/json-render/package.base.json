@@ -1,6 +1,6 @@
 {
   "name": "@shadcncraft/json-render",
-  "version": "0.1.0-local.0",
+  "version": "0.1.0-local.2",
   "description": "shadcncraft Free blocks for JSON Render: a catalog agents compose pages from, with guidance and a checker.",
   "license": "Apache-2.0",
   "type": "module",
@@ -10,11 +10,21 @@
     "directory": "packages/json-render"
   },
   "homepage": "https://free.shadcncraft.com",
-  "keywords": ["json-render", "shadcn", "shadcncraft", "react", "ai", "agents", "generative-ui"],
+  "keywords": [
+    "json-render",
+    "shadcn",
+    "shadcncraft",
+    "react",
+    "ai",
+    "agents",
+    "generative-ui"
+  ],
   "bin": {
     "shadcncraft-json-render": "./bin/shadcncraft-json-render.js"
   },
-  "sideEffects": ["**/*.css"],
+  "sideEffects": [
+    "**/*.css"
+  ],
   "files": [
     "modules",
     "types",
@@ -25,17 +35,40 @@
     "bin",
     "*.js",
     "*.d.ts",
-    "*.json",
+    "guidance.json",
+    "samples.json",
+    "schema.json",
     "README.md"
   ],
   "exports": {
-    ".": { "types": "./types/components.d.ts", "import": "./modules/components.js" },
-    "./catalog": { "types": "./types/catalog.d.ts", "import": "./modules/catalog.js" },
-    "./layout": { "types": "./layout.d.ts", "import": "./layout.js" },
-    "./layout/catalog": { "types": "./layout-catalog.d.ts", "import": "./layout-catalog.js" },
-    "./validate": { "types": "./validate.d.ts", "import": "./validate.js" },
-    "./styles.css": { "types": "./styles.d.ts", "default": "./styles/blocks.css" },
-    "./theme.css": { "types": "./styles.d.ts", "default": "./styles/theme.css" },
+    ".": {
+      "types": "./types/components.d.ts",
+      "import": "./modules/components.js"
+    },
+    "./catalog": {
+      "types": "./types/catalog.d.ts",
+      "import": "./modules/catalog.js"
+    },
+    "./layout": {
+      "types": "./layout.d.ts",
+      "import": "./layout.js"
+    },
+    "./layout/catalog": {
+      "types": "./layout-catalog.d.ts",
+      "import": "./layout-catalog.js"
+    },
+    "./validate": {
+      "types": "./validate.d.ts",
+      "import": "./validate.js"
+    },
+    "./styles.css": {
+      "types": "./styles.d.ts",
+      "default": "./styles/blocks.css"
+    },
+    "./theme.css": {
+      "types": "./styles.d.ts",
+      "default": "./styles/theme.css"
+    },
     "./guidance.json": "./guidance.json",
     "./samples.json": "./samples.json",
     "./schema.json": "./schema.json",
