@@ -106,6 +106,30 @@ export async function exercise({ spec }) {
     JSON.stringify(last())
   );
 
+  // successMessage: shown after a successful submit, field cleared
+  const withMessage = JSON.parse(JSON.stringify(spec));
+  withMessage.elements["newsletter-signup-5"].props.successMessage =
+    "Thanks, you're subscribed.";
+  await render(withMessage);
+  const nl = block("newsletter-signup-5");
+  type(nl.querySelector("input"), "grace@example.com");
+  await frame();
+  nl.querySelector("button[type=submit]").click();
+  await wait(100);
+  const status = nl.querySelector('[role="status"]');
+  check(
+    "NewsletterSignup5 successMessage shows and the field clears",
+    status?.textContent === "Thanks, you're subscribed." &&
+      nl.querySelector("input").value === "",
+    `${status?.textContent ?? "no status"} / "${nl.querySelector("input").value}"`
+  );
+  check(
+    "NewsletterSignup5 email field has an accessible name",
+    nl.querySelector("input").getAttribute("aria-label") === "Email address",
+    nl.querySelector("input").getAttribute("aria-label")
+  );
+  await render(spec);
+
   // FAQs4 accordion opens
   const trigger = block("faqs-4").querySelector("button");
   trigger.click();

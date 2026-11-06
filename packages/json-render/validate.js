@@ -402,6 +402,9 @@ export function validateSpec(spec, options = {}) {
     if (props && isObject(blockSamples)) {
       for (const [prop, sample] of Object.entries(blockSamples)) {
         if (Object.hasOwn(props, prop)) continue;
+        // A link target is irrelevant when its label is set to "" (the link is hidden).
+        const controller = lint?.components?.[type]?.sampleIf?.[prop];
+        if (controller && props[controller] === "") continue;
         const hint = (sampleHints[prop] ?? (() => "Set real copy for it."))(type);
         add("warning", "sample_content", id, pointer("elements", id, "props", prop), `${type}.${prop} is not set, so it renders the sample ${quote(sample)}.`, hint);
       }

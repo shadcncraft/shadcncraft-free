@@ -28,6 +28,8 @@ export interface ComponentGuidance {
   grid?: { prop: string; columns: number };
   /** Props that replace the placeholder logo; with none set, check warns. */
   logo?: string[];
+  /** Omitted prop → prop that hides it: no sample_content warning when that prop is "". */
+  sampleIf?: Record<string, string>;
   /** Events that may stay unbound without a warning. */
   optionalEvents?: string[];
   content: Record<string, ContentGuidance>;

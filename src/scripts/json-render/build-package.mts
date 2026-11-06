@@ -196,7 +196,7 @@ function extractSamples(filename: string, source: string, exportName: string) {
   if (!parameter || !ts.isObjectBindingPattern(parameter.name))
     throw new Error(`${exportName} in ${filename} has no destructured props`);
   // Content only: behaviour flags and neutral defaults are not "sample content".
-  const neutral = new Set(["homeHref", "logoAlt"]);
+  const neutral = new Set(["homeHref", "logoAlt", "emailLabel"]);
   return Object.fromEntries(
     parameter.name.elements
       .filter((element) => element.initializer && !neutral.has(element.name.getText(ast)))

@@ -11,6 +11,8 @@ export const propsSchema = z.strictObject({
   placeholder: text.optional(),
   buttonLabel: text.optional(),
   privacyNote: z.string().optional(),
+  emailLabel: text.optional(),
+  successMessage: text.optional(),
   email: z.string().optional(),
 });
 

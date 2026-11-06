@@ -15,8 +15,9 @@ export function useEventAction(
   const inFlight = useRef(false);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  async function run() {
-    if (loading || !handle.bound || inFlight.current) return;
+  /** Resolves true when the bound actions completed without an error. */
+  async function run(): Promise<boolean> {
+    if (loading || !handle.bound || inFlight.current) return false;
     inFlight.current = true;
     setPending(true);
     setError(null);
@@ -24,8 +25,10 @@ export function useEventAction(
       before?.();
       // emit is typed void, but the renderer returns the action sequence promise.
       await handle.emit();
+      return true;
     } catch {
       setError("We couldn't complete that action. Please try again.");
+      return false;
     } finally {
       inFlight.current = false;
       setPending(false);

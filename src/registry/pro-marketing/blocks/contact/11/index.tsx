@@ -33,6 +33,8 @@ export type Contact11Props = {
   privacyLabel?: string;
   privacyHref?: string;
   submitLabel?: string;
+  /** Shown under the button, e.g. after a successful send. */
+  statusMessage?: string;
   /** Controlled values. Omit to let the fields manage their own values. */
   values?: Partial<Contact11Values>;
   onValuesChange?: (values: Contact11Values) => void;
@@ -68,6 +70,7 @@ export function Contact11({
   privacyLabel = "Privacy Policy",
   privacyHref = "#",
   submitLabel = "Send message",
+  statusMessage,
   values,
   onValuesChange,
   onSubmit,
@@ -164,6 +167,11 @@ export function Contact11({
             <Button type="submit" className="w-full" disabled={submitDisabled}>
               {submitLabel}
             </Button>
+            {statusMessage && (
+              <p role="status" className="text-center text-sm text-foreground">
+                {statusMessage}
+              </p>
+            )}
           </form>
         </div>
       </div>

@@ -81,6 +81,9 @@
           "idealChars": [6, 16],
           "maxChars": 24
         }
+      },
+      "sampleIf": {
+        "linkHref": "linkLabel"
       }
     },
     "Benefits13": {
@@ -296,6 +299,9 @@
           "idealChars": [6, 20],
           "maxChars": 28
         }
+      },
+      "sampleIf": {
+        "supportLinkHref": "supportLinkLabel"
       }
     },
     "Team6": {
@@ -362,7 +368,8 @@
       "pairsWith": ["FAQs4", "Benefits13", "Footer4"],
       "notes": [
         "Bind email to state ({\"$bindState\": \"/newsletter/email\"}) and pass {\"$state\": \"/newsletter/email\"} in the on.submit params; otherwise the action cannot see the address.",
-        "The field is required and must be an email address before on.submit fires."
+        "The field is required and must be an email address before on.submit fires.",
+        "Set successMessage to show it in place of the privacy note after on.submit succeeds; the email field is then cleared."
       ],
       "content": {
         "heading": {
@@ -384,6 +391,10 @@
         "placeholder": {
           "idealChars": [8, 24],
           "maxChars": 32
+        },
+        "successMessage": {
+          "idealChars": [10, 40],
+          "maxChars": 60
         }
       }
     },
@@ -402,7 +413,8 @@
         "Bind values to state ({\"$bindState\": \"/contact\"}) and pass {\"$state\": \"/contact\"} in the on.submit params; the action receives {name, email, message, consent}.",
         "Set consentText and privacyLabel to \"\" to remove the consent row.",
         "Use one Contact11 per page: its fields have fixed ids.",
-        "The heading sits in a narrow column; keep it under 44 characters."
+        "The heading sits in a narrow column; keep it under 44 characters.",
+        "Set successMessage to show it under the button after on.submit succeeds; the fields are then cleared."
       ],
       "content": {
         "tagline": {
@@ -424,7 +436,14 @@
         "consentText": {
           "idealChars": [8, 30],
           "maxChars": 44
+        },
+        "successMessage": {
+          "idealChars": [10, 60],
+          "maxChars": 90
         }
+      },
+      "sampleIf": {
+        "privacyHref": "privacyLabel"
       }
     },
     "CTA9": {

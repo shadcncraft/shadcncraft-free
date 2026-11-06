@@ -18,6 +18,10 @@ export type NewsletterSignup5Props = {
   placeholder?: string;
   buttonLabel?: string;
   privacyNote?: string;
+  /** Accessible name of the email field. */
+  emailLabel?: string;
+  /** Replaces the privacy note, e.g. after a successful sign-up. */
+  statusMessage?: string;
   /** Controlled email value. Omit to let the input manage its own value. */
   email?: string;
   onEmailChange?: (email: string) => void;
@@ -32,6 +36,8 @@ export function NewsletterSignup5({
   placeholder = "email@example.com",
   buttonLabel = "Subscribe",
   privacyNote = "We respect your privacy.",
+  emailLabel = "Email address",
+  statusMessage,
   email,
   onEmailChange,
   onSubmit,
@@ -67,6 +73,7 @@ export function NewsletterSignup5({
               }
             >
               <Input
+                aria-label={emailLabel}
                 placeholder={placeholder}
                 className="w-full"
                 type={onSubmit ? "email" : undefined}
@@ -74,23 +81,28 @@ export function NewsletterSignup5({
                 value={email}
                 onChange={onEmailChange && ((event) => onEmailChange(event.target.value))}
               />
-              <Button
-                type="submit"
-                aria-label="Subscribe to newsletter"
-                disabled={submitDisabled}
-              >
+              <Button type="submit" disabled={submitDisabled}>
                 <Mail /> {buttonLabel}
               </Button>
             </form>
 
-            {/* Privacy Policy */}
-            {privacyNote && (
+            {/* Status or Privacy Policy */}
+            {statusMessage ? (
               <span
-                className="text-center text-xs text-muted-foreground lg:text-right"
-                role="note"
+                className="text-center text-xs text-foreground lg:text-right"
+                role="status"
               >
-                {privacyNote}
+                {statusMessage}
               </span>
+            ) : (
+              privacyNote && (
+                <span
+                  className="text-center text-xs text-muted-foreground lg:text-right"
+                  role="note"
+                >
+                  {privacyNote}
+                </span>
+              )
             )}
           </div>
         </div>

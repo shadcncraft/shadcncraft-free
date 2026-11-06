@@ -1,6 +1,7 @@
 "use client";
 
 import { type BaseComponentProps, useBoundProp } from "@json-render/react";
+import { useState } from "react";
 
 import {
   Contact11,
@@ -16,16 +17,31 @@ function Contact11Adapter({ props, on, loading, bindings }: BaseComponentProps) 
     bindings?.values
   );
   const submit = useEventAction(on("submit"), loading);
+  const [done, setDone] = useState(false);
   const result = propsSchema.safeParse(props);
   if (!result.success) return <InvalidProps name="Contact11" />;
   const bound = Boolean(bindings?.values);
+  const { successMessage, ...content } = result.data;
   return (
     <>
       <Contact11
-        {...result.data}
+        {...content}
+        statusMessage={done ? successMessage : undefined}
         values={bound ? (values ?? {}) : undefined}
-        onValuesChange={bound ? setValues : undefined}
-        onSubmit={() => void submit.run()}
+        onValuesChange={
+          bound
+            ? (next) => {
+                setDone(false);
+                setValues(next);
+              }
+            : undefined
+        }
+        onSubmit={async () => {
+          if ((await submit.run()) && successMessage) {
+            setDone(true);
+            if (bound) setValues({ name: "", email: "", message: "", consent: false });
+          }
+        }}
         submitDisabled={submit.disabled}
       />
       <ActionError error={submit.error} />

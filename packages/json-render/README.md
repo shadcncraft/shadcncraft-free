@@ -15,7 +15,7 @@ Blocks: `TopNavigation5`, `Banner10`, `Benefits13`, `Testimonials11`,
 ## Install
 
 ```sh
-npm install @shadcncraft/json-render @json-render/core @json-render/react zod
+npm install @shadcncraft/json-render @json-render/core@^0.22.0 @json-render/react@^0.22.0 zod@^4
 ```
 
 React 19, `@json-render/*` (0.22 recommended; 0.21.3 works) and zod 4 are
@@ -70,6 +70,10 @@ the rest of your app. The blocks read the standard shadcn theme variables
 `theme.css` supplies the shadcncraft Free values. Leave it out to use your
 app's theme. Add the `dark` class on a parent for dark mode.
 
+Blocks are full width. If your app has no CSS reset, add `body { margin: 0 }`
+so the browser's default margin doesn't frame them (Tailwind's preflight
+already does this).
+
 ## Links, sections and logos
 
 Give a section an `anchor` and link to it with `"href": "#<anchor>"`. That's
@@ -103,7 +107,8 @@ your action through state:
 ```
 
 Contact11 binds `values` (`{ name, email, message, consent }`), and Pricing8
-binds `selectedPlan` (the plan's name).
+binds `selectedPlan` (the plan's name). Give NewsletterSignup5 and Contact11 a `successMessage`
+to confirm a successful submit; the form then clears.
 
 ## Check a document
 

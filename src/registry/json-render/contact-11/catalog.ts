@@ -17,6 +17,7 @@ export const propsSchema = z.strictObject({
   privacyLabel: z.string().optional(),
   privacyHref: href.optional(),
   submitLabel: text.optional(),
+  successMessage: text.optional(),
   values: z
     .object({
       name: z.string().optional(),

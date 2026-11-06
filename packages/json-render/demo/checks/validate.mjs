@@ -309,6 +309,19 @@ const cases_ = [
     }),
     (r) => codes(r).includes("invalid_prop"),
   ],
+  [
+    "hidden support line needs no link target",
+    page(["a"], {
+      a: block("FAQs4", {
+        tagline: "",
+        heading: "FAQ",
+        items: [{ question: "Q?", answer: "A." }],
+        supportText: "",
+        supportLinkLabel: "",
+      }),
+    }),
+    (r) => !codes(r).includes("sample_content"),
+  ],
   // Info
   [
     "dynamic_prop for $bindState",
