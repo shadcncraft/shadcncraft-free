@@ -8,6 +8,7 @@
         "description": "Set up Lumen in minutes and see where your team's time really goes.",
         "primaryLabel": "Start free trial"
       },
+      "children": [],
       "on": {
         "primary": {
           "action": "startTrial",

@@ -28,6 +28,7 @@
         ],
         "actionLabel": "Sign in"
       },
+      "children": [],
       "on": {
         "action": {
           "action": "signIn",

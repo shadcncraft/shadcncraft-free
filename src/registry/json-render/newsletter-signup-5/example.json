@@ -13,6 +13,7 @@
           "$bindState": "/newsletter/email"
         }
       },
+      "children": [],
       "on": {
         "submit": {
           "action": "subscribe",

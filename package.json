@@ -16,7 +16,9 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
     "registry:build": "tsx ./src/scripts/build-registry.mts && prettier --log-level silent --write \"src/registry/**/*.{ts,tsx,json,mdx}\" --cache",
     "clean": "rm -rf node_modules && rm -rf .turbo && rm -rf .next && rm -rf .source",
-    "prepare": "husky"
+    "prepare": "husky",
+    "json-render:build": "tsx ./src/scripts/json-render/build-package.mts",
+    "json-render:check": "tsx ./src/scripts/json-render/default-markup.mts --check && tsx ./src/scripts/json-render/check-contracts.mts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -83,12 +85,14 @@
     "@types/react": "^19.2.8",
     "@types/react-dom": "^19.2.3",
     "babel-plugin-react-compiler": "1.0.0",
+    "esbuild": "^0.25.12",
     "eslint": "^9.39.2",
     "eslint-config-next": "16.1.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
+    "postcss": "^8.5.6",
     "prettier": "^3.7.4",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4.1.18",

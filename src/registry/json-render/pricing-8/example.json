@@ -69,6 +69,7 @@
           "$bindState": "/pricing/selectedPlan"
         }
       },
+      "children": [],
       "on": {
         "select": {
           "action": "choosePlan",

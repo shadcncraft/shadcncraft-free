@@ -21,6 +21,7 @@
           "$bindState": "/contact"
         }
       },
+      "children": [],
       "on": {
         "submit": {
           "action": "sendContact",

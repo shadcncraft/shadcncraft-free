@@ -1,0 +1,55 @@
+{
+  "name": "@shadcncraft/json-render",
+  "version": "0.1.0-local.0",
+  "description": "shadcncraft Free blocks for JSON Render: a catalog agents compose pages from, with guidance and a checker.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shadcncraft/shadcncraft-free.git",
+    "directory": "packages/json-render"
+  },
+  "homepage": "https://free.shadcncraft.com",
+  "keywords": ["json-render", "shadcn", "shadcncraft", "react", "ai", "agents", "generative-ui"],
+  "bin": {
+    "shadcncraft-json-render": "./bin/shadcncraft-json-render.js"
+  },
+  "sideEffects": ["**/*.css"],
+  "files": [
+    "modules",
+    "types",
+    "styles",
+    "data",
+    "examples",
+    "skills",
+    "bin",
+    "*.js",
+    "*.d.ts",
+    "*.json",
+    "README.md"
+  ],
+  "exports": {
+    ".": { "types": "./types/components.d.ts", "import": "./modules/components.js" },
+    "./catalog": { "types": "./types/catalog.d.ts", "import": "./modules/catalog.js" },
+    "./layout": { "types": "./layout.d.ts", "import": "./layout.js" },
+    "./layout/catalog": { "types": "./layout-catalog.d.ts", "import": "./layout-catalog.js" },
+    "./validate": { "types": "./validate.d.ts", "import": "./validate.js" },
+    "./styles.css": { "types": "./styles.d.ts", "default": "./styles/blocks.css" },
+    "./theme.css": { "types": "./styles.d.ts", "default": "./styles/theme.css" },
+    "./guidance.json": "./guidance.json",
+    "./samples.json": "./samples.json",
+    "./schema.json": "./schema.json",
+    "./skills/shadcncraft-json-render/SKILL.md": "./skills/shadcncraft-json-render/SKILL.md",
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "@json-render/core": "^0.21.3 || ^0.22.0",
+    "@json-render/react": "^0.21.3 || ^0.22.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "zod": "^4.1.0"
+  },
+  "scripts": {
+    "prepublishOnly": "node -e \"throw new Error('Local build: publishing is disabled until release review.')\""
+  }
+}

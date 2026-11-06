@@ -6,7 +6,12 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
-import { defineRegistry, JSONUIProvider, Renderer } from "@json-render/react";
+import {
+  defineRegistry,
+  JSONUIProvider,
+  type JSONUIProviderProps,
+  Renderer,
+} from "@json-render/react";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
@@ -81,7 +86,8 @@ for (const [item, contract] of Object.entries(contracts)) {
       null,
       createElement(
         JSONUIProvider,
-        { registry, initialState: spec.state ?? {}, handlers },
+        // Children are passed as the third argument; the props type still lists them.
+        { registry, initialState: spec.state ?? {}, handlers } as unknown as JSONUIProviderProps,
         createElement(Renderer, { spec, registry })
       )
     )

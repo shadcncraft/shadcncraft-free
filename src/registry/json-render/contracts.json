@@ -1,46 +1,68 @@
 {
-  "cta-9": {
-    "component": "CTA9",
-    "events": ["primary"]
-  },
-  "testimonials-11": {
-    "component": "Testimonials11",
-    "events": []
-  },
-  "pricing-8": {
-    "component": "Pricing8",
-    "events": ["select"]
-  },
-  "faqs-4": {
-    "component": "FAQs4",
-    "events": []
+  "banner-10": {
+    "component": "Banner10",
+    "export": "Banner10",
+    "block": "registry/pro-marketing/blocks/banners/10",
+    "events": ["dismiss"]
   },
   "benefits-13": {
     "component": "Benefits13",
+    "export": "Benefits13",
+    "block": "registry/pro-marketing/blocks/benefits/13",
     "events": []
   },
-  "team-6": {
-    "component": "Team6",
+  "contact-11": {
+    "component": "Contact11",
+    "export": "Contact11",
+    "block": "registry/pro-marketing/blocks/contact/11",
+    "events": ["submit"]
+  },
+  "cta-9": {
+    "component": "CTA9",
+    "export": "CTA9",
+    "block": "registry/pro-marketing/blocks/cta/9",
+    "events": ["primary"]
+  },
+  "faqs-4": {
+    "component": "FAQs4",
+    "export": "Faqs4",
+    "block": "registry/pro-marketing/blocks/faqs/4",
+    "events": []
+  },
+  "footer-4": {
+    "component": "Footer4",
+    "export": "Footer4",
+    "block": "registry/pro-marketing/blocks/footers/4",
     "events": []
   },
   "newsletter-signup-5": {
     "component": "NewsletterSignup5",
+    "export": "NewsletterSignup5",
+    "block": "registry/pro-marketing/blocks/newsletter-signup/5",
     "events": ["submit"]
   },
-  "contact-11": {
-    "component": "Contact11",
-    "events": ["submit"]
+  "pricing-8": {
+    "component": "Pricing8",
+    "export": "Pricing8",
+    "block": "registry/pro-marketing/blocks/pricing/8",
+    "events": ["select"]
   },
-  "banner-10": {
-    "component": "Banner10",
-    "events": ["dismiss"]
+  "team-6": {
+    "component": "Team6",
+    "export": "Team6",
+    "block": "registry/pro-marketing/blocks/team/6",
+    "events": []
   },
-  "footer-4": {
-    "component": "Footer4",
+  "testimonials-11": {
+    "component": "Testimonials11",
+    "export": "Testimonial11",
+    "block": "registry/pro-marketing/blocks/testimonials/11",
     "events": []
   },
   "top-navigation-5": {
     "component": "TopNavigation5",
+    "export": "TopNavigation5",
+    "block": "registry/pro-marketing/blocks/top-navigation/5",
     "events": ["action"]
   }
 }

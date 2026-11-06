@@ -23,7 +23,8 @@
         "supportText": "Can't find what you're looking for?",
         "supportLinkLabel": "Talk to our team",
         "supportLinkHref": "/contact"
-      }
+      },
+      "children": []
     }
   }
 }

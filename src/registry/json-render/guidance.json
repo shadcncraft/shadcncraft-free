@@ -1,0 +1,476 @@
+{
+  "version": 1,
+  "components": {
+    "TopNavigation5": {
+      "summary": "Site header: logo on the left, up to six centred text links and one outline action button; collapses to a menu button on mobile.",
+      "layout": "header",
+      "surface": "plain",
+      "media": "logo",
+      "position": "top",
+      "bestFor": [
+        "the first element of any marketing page",
+        "sites with 3-5 top-level sections"
+      ],
+      "avoidWhen": [
+        "the host app already renders its own header",
+        "you need dropdown menus or more than six links"
+      ],
+      "pairsWith": ["Banner10", "Benefits13", "Pricing8"],
+      "notes": [
+        "Mark the current page's link with active: true.",
+        "Without logoSrc it shows the Acme placeholder logo; set logoSrc and logoAlt.",
+        "on.action is the outline button (sign in, log in, get started). Set actionLabel to \"\" to hide it."
+      ],
+      "content": {
+        "links": {
+          "idealItems": [3, 5],
+          "maxItems": 6,
+          "fields": {
+            "label": {
+              "idealChars": [4, 12],
+              "maxChars": 16
+            }
+          }
+        },
+        "actionLabel": {
+          "idealChars": [4, 12],
+          "maxChars": 16
+        },
+        "logoAlt": {
+          "idealChars": [2, 40],
+          "maxChars": 60
+        }
+      }
+    },
+    "Banner10": {
+      "summary": "Thin announcement bar on a muted background: info icon, bold highlight, one-sentence message, optional link and a close button.",
+      "layout": "bar",
+      "surface": "muted-bar",
+      "media": "icon",
+      "position": "top",
+      "optionalEvents": ["dismiss"],
+      "bestFor": [
+        "a launch, event or policy notice above the navigation",
+        "one short message with a link to details"
+      ],
+      "avoidWhen": [
+        "the message needs more than one sentence",
+        "there is nothing time-sensitive to announce"
+      ],
+      "pairsWith": ["TopNavigation5"],
+      "notes": [
+        "Place it first, above TopNavigation5.",
+        "The close button hides the banner locally; bind on.dismiss only to remember the dismissal.",
+        "highlight is the bold lead-in (e.g. \"New:\"); a space is added after it."
+      ],
+      "content": {
+        "highlight": {
+          "idealChars": [3, 20],
+          "maxChars": 28
+        },
+        "message": {
+          "idealChars": [15, 70],
+          "maxChars": 100
+        },
+        "linkLabel": {
+          "idealChars": [6, 16],
+          "maxChars": 24
+        }
+      }
+    },
+    "Benefits13": {
+      "summary": "Centred heading over a grid of bordered cards, each with a round icon, a title and a short description; three columns on desktop, two on tablet, one on mobile.",
+      "layout": "centered",
+      "surface": "plain",
+      "media": "icon",
+      "bestFor": [
+        "explaining 3, 6 or 9 product benefits right after the hero or navigation",
+        "features that each fit in one sentence"
+      ],
+      "avoidWhen": [
+        "you have only one or two points (use the heading description)",
+        "benefits need screenshots"
+      ],
+      "pairsWith": ["Testimonials11", "Pricing8", "CTA9"],
+      "notes": [
+        "Use 3, 6 or 9 benefits so the three-column grid has no gaps.",
+        "icon is one of: prioritize, integrate, data, analytics, workflow, team, speed, security, privacy, time, launch, ai. Omitted icons cycle through that list."
+      ],
+      "content": {
+        "tagline": {
+          "idealChars": [3, 16],
+          "maxChars": 24
+        },
+        "heading": {
+          "idealChars": [15, 45],
+          "maxChars": 70
+        },
+        "description": {
+          "idealChars": [40, 140],
+          "maxChars": 200
+        },
+        "benefits": {
+          "idealItems": [3, 6],
+          "maxItems": 9,
+          "fields": {
+            "title": {
+              "idealChars": [10, 32],
+              "maxChars": 44
+            },
+            "description": {
+              "idealChars": [40, 110],
+              "maxChars": 150
+            }
+          }
+        }
+      }
+    },
+    "Testimonials11": {
+      "summary": "Centred heading over a grid of quote cards, each with large quote marks, the quote, and the person's avatar, name and role; three columns on desktop.",
+      "layout": "centered",
+      "surface": "plain",
+      "media": "avatar",
+      "bestFor": [
+        "social proof from 3 or 6 customers",
+        "quotes of one to three sentences"
+      ],
+      "avoidWhen": [
+        "you have a single quote (use one card only if the page needs it)",
+        "quotes run longer than three sentences"
+      ],
+      "pairsWith": ["Benefits13", "Pricing8", "CTA9"],
+      "notes": [
+        "Use 3 or 6 testimonials so the grid has no gaps.",
+        "Put the company in role, e.g. \"VP Engineering, Fieldwork\".",
+        "Without imageSrc the avatar shows the person's initials."
+      ],
+      "content": {
+        "tagline": {
+          "idealChars": [3, 16],
+          "maxChars": 24
+        },
+        "heading": {
+          "idealChars": [15, 45],
+          "maxChars": 70
+        },
+        "description": {
+          "idealChars": [40, 140],
+          "maxChars": 200
+        },
+        "testimonials": {
+          "idealItems": [3, 6],
+          "maxItems": 9,
+          "fields": {
+            "quote": {
+              "idealChars": [60, 160],
+              "maxChars": 220
+            },
+            "name": {
+              "idealChars": [5, 24],
+              "maxChars": 32
+            },
+            "role": {
+              "idealChars": [5, 36],
+              "maxChars": 48
+            }
+          }
+        }
+      }
+    },
+    "Pricing8": {
+      "summary": "Centred heading over up to four plan cards: name, short description, large price with period, a checklist of features (optional tooltips) and a full-width button; the featured plan gets a primary border and solid button.",
+      "layout": "centered",
+      "surface": "plain",
+      "media": "none",
+      "bestFor": [
+        "two to four subscription plans",
+        "comparing plans by a short feature list"
+      ],
+      "avoidWhen": [
+        "you need a feature comparison table",
+        "pricing is fully custom (use CTA9 with a contact action)"
+      ],
+      "pairsWith": ["FAQs4", "Testimonials11", "CTA9"],
+      "notes": [
+        "price is display text: \"$29\", \"Free\" or \"Custom\". period defaults to \"/month\"; set \"\" to hide it.",
+        "Mark one plan featured: true.",
+        "on.select fires for every plan button. Bind selectedPlan to state ({\"$bindState\": \"/pricing/selectedPlan\"}) and pass {\"$state\": \"/pricing/selectedPlan\"} in the action params to know which plan was chosen."
+      ],
+      "content": {
+        "tagline": {
+          "idealChars": [3, 16],
+          "maxChars": 24
+        },
+        "heading": {
+          "idealChars": [15, 45],
+          "maxChars": 70
+        },
+        "description": {
+          "idealChars": [40, 140],
+          "maxChars": 200
+        },
+        "plans": {
+          "idealItems": [3, 3],
+          "maxItems": 4,
+          "fields": {
+            "name": {
+              "idealChars": [4, 14],
+              "maxChars": 20
+            },
+            "description": {
+              "idealChars": [15, 40],
+              "maxChars": 60
+            },
+            "price": {
+              "idealChars": [2, 7],
+              "maxChars": 9
+            },
+            "ctaLabel": {
+              "idealChars": [6, 16],
+              "maxChars": 20
+            }
+          }
+        }
+      }
+    },
+    "FAQs4": {
+      "summary": "Centred tagline and heading over a single-open accordion of questions, followed by a one-line support prompt with a link.",
+      "layout": "centered",
+      "surface": "plain",
+      "media": "none",
+      "bestFor": [
+        "4-8 common questions before the closing CTA or after pricing",
+        "answers of one to three sentences"
+      ],
+      "avoidWhen": [
+        "answers need lists, tables or images",
+        "you have fewer than three questions"
+      ],
+      "pairsWith": ["Pricing8", "CTA9", "Contact11"],
+      "notes": [
+        "FAQs4 has no description prop.",
+        "Set supportText and supportLinkLabel to \"\" to remove the support line."
+      ],
+      "content": {
+        "tagline": {
+          "idealChars": [3, 16],
+          "maxChars": 24
+        },
+        "heading": {
+          "idealChars": [15, 45],
+          "maxChars": 70
+        },
+        "items": {
+          "idealItems": [4, 8],
+          "maxItems": 12,
+          "fields": {
+            "question": {
+              "idealChars": [15, 60],
+              "maxChars": 90
+            },
+            "answer": {
+              "idealChars": [60, 240],
+              "maxChars": 400
+            }
+          }
+        },
+        "supportText": {
+          "idealChars": [15, 45],
+          "maxChars": 70
+        },
+        "supportLinkLabel": {
+          "idealChars": [6, 20],
+          "maxChars": 28
+        }
+      }
+    },
+    "Team6": {
+      "summary": "Centred heading over a grid of member cards: a large square portrait beside the name and title, with a primary accent line.",
+      "layout": "centered",
+      "surface": "plain",
+      "media": "portrait",
+      "bestFor": [
+        "an about page or company section with 3-9 people",
+        "leadership or founding teams"
+      ],
+      "avoidWhen": [
+        "you have more than 12 people",
+        "you have no portraits (initials are a fallback, not a design)"
+      ],
+      "pairsWith": ["Benefits13", "Testimonials11", "Contact11"],
+      "notes": [
+        "Use 3, 6 or 9 members so the grid has no gaps.",
+        "Without imageSrc the portrait shows the person's initials."
+      ],
+      "content": {
+        "tagline": {
+          "idealChars": [3, 16],
+          "maxChars": 24
+        },
+        "heading": {
+          "idealChars": [15, 45],
+          "maxChars": 70
+        },
+        "description": {
+          "idealChars": [40, 140],
+          "maxChars": 200
+        },
+        "members": {
+          "idealItems": [3, 6],
+          "maxItems": 12,
+          "fields": {
+            "name": {
+              "idealChars": [5, 22],
+              "maxChars": 28
+            },
+            "title": {
+              "idealChars": [5, 26],
+              "maxChars": 34
+            }
+          }
+        }
+      }
+    },
+    "NewsletterSignup5": {
+      "summary": "Rounded muted panel: heading and description on the left, an email field with a subscribe button and a privacy note on the right; stacks on mobile.",
+      "layout": "split",
+      "surface": "muted-panel",
+      "media": "none",
+      "bestFor": ["collecting email sign-ups near the end of a page or blog post"],
+      "avoidWhen": [
+        "it would sit next to another panel (CTA9 or another NewsletterSignup5)",
+        "you need more than an email address (use Contact11)"
+      ],
+      "pairsWith": ["FAQs4", "Benefits13", "Footer4"],
+      "notes": [
+        "Bind email to state ({\"$bindState\": \"/newsletter/email\"}) and pass {\"$state\": \"/newsletter/email\"} in the on.submit params; otherwise the action cannot see the address.",
+        "The field is required and must be an email address before on.submit fires."
+      ],
+      "content": {
+        "heading": {
+          "idealChars": [15, 45],
+          "maxChars": 70
+        },
+        "description": {
+          "idealChars": [30, 110],
+          "maxChars": 150
+        },
+        "buttonLabel": {
+          "idealChars": [6, 12],
+          "maxChars": 16
+        },
+        "privacyNote": {
+          "idealChars": [10, 40],
+          "maxChars": 60
+        },
+        "placeholder": {
+          "idealChars": [8, 24],
+          "maxChars": 32
+        }
+      }
+    },
+    "Contact11": {
+      "summary": "Centred heading over a narrow form: name, email and message fields, a privacy consent checkbox with a link, and a full-width submit button.",
+      "layout": "centered",
+      "surface": "plain",
+      "media": "none",
+      "bestFor": ["a contact or support page", "sales enquiries after pricing"],
+      "avoidWhen": [
+        "you only need an email address (use NewsletterSignup5)",
+        "the form needs extra fields"
+      ],
+      "pairsWith": ["FAQs4", "Team6", "Footer4"],
+      "notes": [
+        "Bind values to state ({\"$bindState\": \"/contact\"}) and pass {\"$state\": \"/contact\"} in the on.submit params; the action receives {name, email, message, consent}.",
+        "Set consentText and privacyLabel to \"\" to remove the consent row.",
+        "Use one Contact11 per page: its fields have fixed ids."
+      ],
+      "content": {
+        "tagline": {
+          "idealChars": [3, 16],
+          "maxChars": 24
+        },
+        "heading": {
+          "idealChars": [15, 45],
+          "maxChars": 70
+        },
+        "description": {
+          "idealChars": [30, 120],
+          "maxChars": 160
+        },
+        "submitLabel": {
+          "idealChars": [6, 16],
+          "maxChars": 22
+        },
+        "consentText": {
+          "idealChars": [8, 30],
+          "maxChars": 44
+        }
+      }
+    },
+    "CTA9": {
+      "summary": "Full-width band on the primary colour: centred heading, optional description and one button with an arrow.",
+      "layout": "centered",
+      "surface": "inverted-panel",
+      "media": "none",
+      "bestFor": [
+        "the closing call to action, right before the footer",
+        "one clear next step (start trial, book demo)"
+      ],
+      "avoidWhen": [
+        "you need two buttons",
+        "it would sit next to another panel (NewsletterSignup5)"
+      ],
+      "pairsWith": ["Testimonials11", "FAQs4", "Footer4"],
+      "notes": ["Use one CTA9 per page, usually last before Footer4."],
+      "content": {
+        "heading": {
+          "idealChars": [15, 45],
+          "maxChars": 70
+        },
+        "description": {
+          "idealChars": [40, 130],
+          "maxChars": 180
+        },
+        "primaryLabel": {
+          "idealChars": [6, 18],
+          "maxChars": 24
+        }
+      }
+    },
+    "Footer4": {
+      "summary": "Site footer: separator, logo with a one-line description and social icons on the left, up to four link columns, then a copyright line.",
+      "layout": "footer",
+      "surface": "plain",
+      "media": "logo",
+      "position": "bottom",
+      "bestFor": ["the last element of any marketing page"],
+      "avoidWhen": ["the host app already renders its own footer"],
+      "pairsWith": ["CTA9", "NewsletterSignup5"],
+      "notes": [
+        "Without logoSrc it shows the Acme placeholder logo; set logoSrc and logoAlt.",
+        "social items without href render as plain icons; set href or remove them."
+      ],
+      "content": {
+        "description": {
+          "idealChars": [20, 80],
+          "maxChars": 120
+        },
+        "columns": {
+          "idealItems": [2, 3],
+          "maxItems": 4,
+          "fields": {
+            "title": {
+              "idealChars": [4, 14],
+              "maxChars": 20
+            }
+          }
+        },
+        "copyright": {
+          "idealChars": [15, 60],
+          "maxChars": 90
+        }
+      }
+    }
+  }
+}
