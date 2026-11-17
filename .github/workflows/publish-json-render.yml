@@ -1,0 +1,65 @@
+# Publishes packages/json-render to npm as @shadcncraft/json-render, with
+# provenance, when a `json-render-v<version>` tag is pushed. The tag's version
+# must match package.base.json.
+#
+# Auth: npm trusted publishing (OIDC) once it is configured for the package on
+# npmjs.com; until then, an NPM_TOKEN repository secret (granular token with
+# publish rights to the @shadcncraft scope).
+name: Publish @shadcncraft/json-render
+
+on:
+  push:
+    tags:
+      - "json-render-v*"
+
+permissions:
+  contents: read
+  id-token: write # npm provenance and trusted publishing
+
+concurrency:
+  group: publish-json-render
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: npm
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      # Trusted publishing needs npm 11.5.1 or later.
+      - run: npm install -g npm@^11.5.1
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Check the tag matches the package version
+        run: |
+          version="$(node -p "require('./packages/json-render/package.base.json').version")"
+          if [ "json-render-v$version" != "$GITHUB_REF_NAME" ]; then
+            echo "Tag $GITHUB_REF_NAME does not match package.base.json version $version" >&2
+            exit 1
+          fi
+
+      - run: pnpm json-render:check
+      - run: pnpm json-render:build
+
+      - name: Publish
+        working-directory: packages/json-render
+        # Prereleases (0.2.0-beta.1) go to the `next` dist-tag, not `latest`.
+        run: |
+          case "${GITHUB_REF_NAME#json-render-v}" in
+            *-*) npm publish --provenance --access public --tag next ;;
+            *) npm publish --provenance --access public ;;
+          esac
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
