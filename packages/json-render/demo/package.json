@@ -1,0 +1,24 @@
+{
+  "name": "shadcncraft-json-render-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@json-render/core": "0.22.0",
+    "@json-render/react": "0.22.0",
+    "@shadcncraft/json-render": "file:../shadcncraft-json-render-0.1.0.tgz",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.8",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "5.1.0",
+    "typescript": "5.9.3",
+    "vite": "7.2.2"
+  }
+}

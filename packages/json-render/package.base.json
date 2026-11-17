@@ -1,6 +1,6 @@
 {
   "name": "@shadcncraft/json-render",
-  "version": "0.1.0-local.9",
+  "version": "0.1.0",
   "description": "shadcncraft Free blocks for JSON Render: a catalog agents compose pages from, with guidance and a checker.",
   "license": "Apache-2.0",
   "type": "module",
@@ -9,7 +9,10 @@
     "url": "git+https://github.com/shadcncraft/shadcncraft-free.git",
     "directory": "packages/json-render"
   },
-  "homepage": "https://free.shadcncraft.com",
+  "homepage": "https://github.com/shadcncraft/shadcncraft-free/tree/main/packages/json-render#readme",
+  "bugs": {
+    "url": "https://github.com/shadcncraft/shadcncraft-free/issues"
+  },
   "keywords": [
     "json-render",
     "shadcn",
@@ -17,10 +20,15 @@
     "react",
     "ai",
     "agents",
-    "generative-ui"
+    "generative-ui",
+    "shadcn-ui",
+    "tailwindcss",
+    "radix-ui",
+    "llm",
+    "ui-blocks"
   ],
   "bin": {
-    "shadcncraft-json-render": "./bin/shadcncraft-json-render.js"
+    "shadcncraft-json-render": "bin/shadcncraft-json-render.js"
   },
   "sideEffects": [
     "**/*.css"
@@ -38,7 +46,8 @@
     "guidance.json",
     "samples.json",
     "schema.json",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "exports": {
     ".": {
@@ -82,7 +91,8 @@
     "react-dom": "^19.0.0",
     "zod": "^4.1.0"
   },
-  "scripts": {
-    "prepublishOnly": "node -e \"throw new Error('Local build: publishing is disabled until release review.')\""
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }
