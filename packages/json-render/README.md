@@ -10,7 +10,22 @@ Blocks: `TopNavigation5`, `Banner10`, `Benefits13`, `Testimonials11`,
 `Pricing8`, `FAQs4`, `Team6`, `NewsletterSignup5`, `Contact11`, `CTA9`,
 `Footer4`, plus a `Stack` layout node.
 
-> Local build. Not published to npm yet.
+## Quick start
+
+1. Install the package and its peers ([Install](#install)).
+2. Import `styles.css` once, plus `theme.css` if your app has no shadcn theme
+   variables. There is no separate `preflight.css`: `styles.css` carries a
+   reset scoped to the blocks, so it works in apps without Tailwind and
+   doesn't restyle the rest of your page. Without any CSS reset, add
+   `body { margin: 0 }` ([Styles](#styles)).
+3. Choose how to load blocks:
+   - An agent or your users pick blocks at runtime: import the combined entry
+     (`@shadcncraft/json-render` and `/catalog`), which holds every block
+     ([Render a page](#render-a-page)).
+   - You know the blocks up front: import each block's own entry points so
+     the bundle holds only those ([One block at a time](#one-block-at-a-time)).
+4. Using a coding agent? Copy the skill into your project so it reads the
+   catalog instead of guessing ([For agents](#for-agents)).
 
 ## Install
 
@@ -53,13 +68,36 @@ export function Page({ spec }) {
 [`examples/pages/product-landing.json`](examples/pages/product-landing.json):
 a `Stack` root whose `children` are blocks, top to bottom.
 
-To render only some blocks, import a block's own entry points:
+### One block at a time
+
+Each block has its own entry points:
 `@shadcncraft/json-render/<item>/catalog` (`componentDefinitions`, `catalog`),
 `@shadcncraft/json-render/<item>` (`components`) and
 `@shadcncraft/json-render/<item>/react` (the plain React block).
+`/layout` and `/layout/catalog` hold the `Stack` node.
 Items: `top-navigation-5`, `banner-10`, `benefits-13`, `testimonials-11`,
 `pricing-8`, `faqs-4`, `team-6`, `newsletter-signup-5`, `contact-11`,
-`cta-9`, `footer-4`.
+`cta-9`, `footer-4`. Build a catalog from the blocks you use:
+
+```tsx
+import { defineCatalog } from "@json-render/core";
+import { defineRegistry } from "@json-render/react";
+import { schema } from "@json-render/react/schema";
+import { layoutComponents } from "@shadcncraft/json-render/layout";
+import { layoutDefinitions } from "@shadcncraft/json-render/layout/catalog";
+import * as cta from "@shadcncraft/json-render/cta-9/catalog";
+import { components as ctaComponents } from "@shadcncraft/json-render/cta-9";
+
+const catalog = defineCatalog(schema, {
+  components: { ...layoutDefinitions, ...cta.componentDefinitions },
+  actions: {},
+});
+const { registry } = defineRegistry(catalog, {
+  components: { ...layoutComponents, ...ctaComponents },
+});
+```
+
+`styles.css` still covers every block.
 
 ## Styles
 
@@ -130,6 +168,18 @@ checker warns past `maxChars`.
 
 [`skills/shadcncraft-json-render/SKILL.md`](skills/shadcncraft-json-render/SKILL.md)
 explains how to choose blocks, compose and edit pages, and verify the result.
+Copy it into your project's skills folder after installing, so your agent
+loads it whenever it builds or edits a page:
+
+```sh
+# Claude Code
+mkdir -p .claude/skills && cp -r node_modules/@shadcncraft/json-render/skills/shadcncraft-json-render .claude/skills/
+# Codex and other agents that read .agents/skills
+mkdir -p .agents/skills && cp -r node_modules/@shadcncraft/json-render/skills/shadcncraft-json-render .agents/skills/
+```
+
+Copy it again after upgrading the package. For agents without skills, point
+them at the file from your `AGENTS.md` or `CLAUDE.md`.
 `guidance.json` holds per-block guidance, and `schema.json` holds each block's
 props as JSON Schema.
 

@@ -49,4 +49,24 @@ node checks/shots.mjs long 375 dark out.png                                  # s
 `checks/layout.mjs` needs the `agent-browser` CLI. Use a new local version for
 every rebuild of an installed tarball, and restart Vite with `--force`.
 
-Publishing is disabled (`prepublishOnly`) until release review.
+`refresh.sh` stamps the local version on the generated `package.json` only;
+`package.base.json` keeps the release version.
+
+## Releasing
+
+`package.base.json` holds the release version, and `npm publish` runs from
+`packages/json-render` after `pnpm json-render:build`. The
+`.github/workflows/publish-json-render.yml` workflow does both, with npm
+provenance, when a `json-render-v<version>` tag is pushed:
+
+```sh
+pnpm json-render:check && pnpm json-render:build
+(cd packages/json-render && npm publish --dry-run)
+git tag json-render-v0.1.0 && git push origin json-render-v0.1.0
+```
+
+The tag must match `package.base.json`. Versions with a prerelease suffix
+publish to the `next` dist-tag. The workflow authenticates with npm trusted
+publishing once it's configured for the package (workflow
+`publish-json-render.yml`, environment `npm`), or an `NPM_TOKEN` repository
+secret before then.
